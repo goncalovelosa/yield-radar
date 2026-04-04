@@ -313,23 +313,41 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <h3>Free</h3>
         <div class="price">$0</div>
         <ul>
-          <li>10 alerts per day</li>
+          <li>3 alerts per day</li>
           <li>Basic chain and risk filters</li>
           <li>Daily digest</li>
           <li>All 6 chains</li>
         </ul>
+        <a href="https://t.me/yieldradar_bot" class="cta-secondary" target="_blank" rel="noopener">Get started →</a>
       </div>
       <div class="pricing-card pricing-pro">
         <span class="pro-badge">Pro</span>
         <h3>Unlimited</h3>
-        <div class="price">200 <span class="price-unit">Stars/mo</span></div>
+        <div class="price"><span class="price-original">$14.99</span> $9.99<span class="price-unit">/mo</span></div>
+        <p class="price-note">Launch price — locks in forever for early adopters</p>
         <ul>
           <li>Unlimited alerts</li>
           <li>Custom filter rules</li>
           <li>Min TVL and risk thresholds</li>
+          <li>7d / 30d APY trend data</li>
+          <li>Volatility &amp; decay tracking</li>
           <li>Priority discovery</li>
         </ul>
         <a href="https://t.me/yieldradar_bot" class="cta-primary" target="_blank" rel="noopener">Subscribe →</a>
+      </div>
+      <div class="pricing-card">
+        <span class="power-badge">Power</span>
+        <h3>Analytics</h3>
+        <div class="price">$29.99<span class="price-unit">/mo</span></div>
+        <p class="price-note">Coming soon</p>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>Yield collapse prediction</li>
+          <li>Social sentiment signals</li>
+          <li>API access</li>
+          <li>Data export</li>
+        </ul>
+        <a href="https://t.me/yieldradar_bot" class="cta-cta-disabled" target="_blank" rel="noopener" style="pointer-events: none; opacity: 0.5;">Coming soon</a>
       </div>
     </div>
   </div>
@@ -396,33 +414,47 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <section class="roadmap" id="roadmap">
   <div class="section-inner">
-    <h2>What's next</h2>
-    <p class="lead">YieldRadar is actively developed. Here's what's coming.</p>
+    <h2>Roadmap</h2>
+    <p class="lead">What we've built and what's coming next.</p>
     <div class="roadmap-grid">
       <div class="roadmap-column">
-        <h3>In progress</h3>
+        <h3>✅ Shipped (v1.0–v1.1)</h3>
         <ul>
-          <li>Normalized 0-100 risk scoring</li>
-          <li>Scoring backtesting and track record</li>
-          <li>Landing page improvements</li>
+          <li>Multi-factor risk scoring (0–100)</li>
+          <li>GoPlus token security scanning</li>
+          <li>DeFiLlama protocol metadata enrichment</li>
+          <li>7d / 30d APY history &amp; trend analytics</li>
+          <li>Telegram Stars subscription payments</li>
+          <li>Onboarding, alerts, digest, deep-dive, settings</li>
+          <li>Docker deployment with health monitoring</li>
         </ul>
       </div>
       <div class="roadmap-column">
-        <h3>Coming soon (v1.2)</h3>
+        <h3>🔄 Next up (v1.2)</h3>
         <ul>
-          <li>More chains: Optimism, Avalanche, zkSync</li>
-          <li>Portfolio tracking (non-custodial, read-only)</li>
-          <li>Web dashboard</li>
-          <li>Yield comparison within same protocol</li>
+          <li>Expanded chains: Optimism, Avalanche, Hyperliquid, Sui</li>
+          <li>Launch pricing — $9.99/mo (locks in forever)</li>
+          <li>Scoring track record &amp; backtesting dashboard</li>
+          <li>Alert quality improvements based on user feedback</li>
         </ul>
       </div>
       <div class="roadmap-column">
-        <h3>Planned (v2.0)</h3>
+        <h3>🔮 Planned (v2.0)</h3>
         <ul>
+          <li>Yield collapse prediction (LSTM anomaly detection)</li>
+          <li>Social sentiment signals (crypto Twitter / Reddit)</li>
+          <li>REST API access (Power tier)</li>
+          <li>Data export (CSV / JSON)</li>
+          <li>Protocol exploit tracking (REKT database)</li>
+        </ul>
+      </div>
+      <div class="roadmap-column">
+        <h3>🚀 Future</h3>
+        <ul>
+          <li>Web dashboard for portfolio monitoring</li>
+          <li>Community watchlists &amp; shared filters</li>
           <li>Cross-chain yield arbitrage detection</li>
-          <li>Historical backtesting of yield strategies</li>
-          <li>Community features (shared watchlists)</li>
-          <li>Mobile app</li>
+          <li>Non-custodial position tracking</li>
         </ul>
       </div>
     </div>

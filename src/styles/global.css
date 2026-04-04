@@ -497,9 +497,9 @@ img {
 /* --- Pricing --- */
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
-  max-width: 640px;
+  max-width: 900px;
   margin: 2.5rem auto 0;
 }
 
@@ -529,6 +529,51 @@ img {
   font-size: 0.75rem;
   padding: 0.25rem 1rem;
   border-radius: 999px;
+}
+
+.power-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-text-muted);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.25rem 1rem;
+  border-radius: 999px;
+}
+
+.price-original {
+  text-decoration: line-through;
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin-right: 0.25rem;
+}
+
+.price-note {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin: -0.25rem 0 0.5rem;
+}
+
+.cta-secondary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.cta-secondary:hover {
+  border-color: var(--color-cta);
+  color: var(--color-cta);
 }
 
 .pricing-card h3 {
@@ -823,15 +868,15 @@ img {
 }
 .roadmap-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   margin-top: 2.5rem;
 }
 .roadmap-column {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
-  padding: 1.5rem;
+  padding: 1.25rem;
 }
 .roadmap-column h3 {
   font-family: var(--font-heading);
@@ -866,7 +911,8 @@ img {
   text-align: center;
 }
 @media (max-width: 768px) {
-  .roadmap-grid { grid-template-columns: 1fr; }
+  .roadmap-grid { grid-template-columns: 1fr 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================
