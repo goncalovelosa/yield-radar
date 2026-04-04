@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="YieldRadar" description="Technical documentation and architecture details">
+
+# Docs
+
+## Tech stack
+
+- **Runtime:** Node.js 24 with TypeScript (ESM, strict mode)
+- **Bot framework:** Grammy with conversations plugin
+- **Database:** SQLite (better-sqlite3, WAL mode)
+- **Testing:** Vitest (504 tests)
+- **Deployment:** Docker, multi-stage build
+
+## Architecture
+
+```
+DeFiLlama API → Fetcher → Filter → SQLite Cache → Risk Scoring → Alert Engine → Telegram
+```
+
+Data flows in one direction. The bot polls DeFiLlama every 5 minutes, filters down to ~3,800 eligible pools, scores each one on six risk factors, and pushes matches to subscribed users.
+
+## Risk scoring model
+
+Each pool receives a composite score based on:
+
+| Factor | Weight | Source |
+|--------|--------|--------|
+| APY / volatility | Base formula | DeFiLlama |
+| TVL quality | Multiplier | DeFiLlama |
+| 7-day trend | Multiplier | DeFiLlama |
+| Impermanent loss | 0.5x penalty | DeFiLlama |
+| Pool maturity | Multiplier | Internal (snapshot count) |
+| Token security | 0.0–1.0 multiplier | GoPlus API |
+| Protocol metadata | Tier classification | DeFiLlama protocols |
+
+## Self-hosting
+
+```bash
+git clone https://github.com/goncalovelosa/yield-radar.git
+cd yield-radar
+cp .env.example .env
+# Edit .env with your TELEGRAM_BOT_TOKEN
+docker compose up -d
+```
+
+## API sources
+
+- **DeFiLlama** — Pool data, APY, TVL, protocol metadata
+- **GoPlus** — Token security analysis (honeypot, malicious contracts, tax)
+
+## Changelog
+
+### v1.1 (April 2026)
+- GoPlus Security API integration
+- DeFiLlama protocol metadata enrichment
+- APY historical snapshots and trend analytics
+- Telegram Stars subscription payments
+
+### v1.0 (March 2026)
+- Data pipeline with 5-minute polling
+- Multi-factor risk scoring with 4-tier labels
+- Telegram bot with onboarding, alerts, digest, settings
+- User management with freemium tiers
+- Docker deployment with health monitoring
+
+</BaseLayout>

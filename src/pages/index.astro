@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="YieldRadar - DeFi yield intelligence with multi-factor risk scoring">
+
+<section class="hero">
+  <div class="hero-inner">
+    <h1>
+      <span class="hero-stat">18,632 yield pools</span> on DeFiLlama.
+      Most of them will lose you money.
+    </h1>
+    <p class="hero-sub">
+      YieldRadar scans them all and pushes the ones worth your attention straight to Telegram.
+      Scored by risk. Filtered to your preferences. Updated every 5 minutes.
+    </p>
+    <a href="https://t.me/yieldradar_bot" class="cta-primary" target="_blank" rel="noopener">
+      Open in Telegram →
+    </a>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="section-inner">
+    <h2>The problem</h2>
+    <p class="lead">
+      DeFi has thousands of yield opportunities across dozens of chains.
+      Finding the good ones means spending hours on aggregators, checking contracts,
+      comparing risk factors — and by the time you find something, the APY has already moved.
+    </p>
+    <div class="stats-grid">
+      <div class="stat">
+        <span class="stat-number">18,632</span>
+        <span class="stat-label">Total pools on DeFiLlama</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">~3,800</span>
+        <span class="stat-label">Pass our quality filters</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">6</span>
+        <span class="stat-label">Chains monitored</span>
+      </div>
+      <div class="stat">
+        <span class="stat-number">5 min</span>
+        <span class="stat-label">Between full scans</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="how" id="how">
+  <div class="section-inner">
+    <h2>How it works</h2>
+    <div class="pipeline">
+      <div class="pipeline-step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>Fetch</h3>
+        <p>Pulls pool data from DeFiLlama every 5 minutes — APY, TVL, 7-day trends, and more.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+        </div>
+        <h3>Filter</h3>
+        <p>Removes garbage: pools under $500K TVL, outlier APYs, chains you don't care about.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m8 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6m0 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14"/></svg>
+        </div>
+        <h3>Score</h3>
+        <p>Multi-factor risk model: APY/volatility, TVL quality, trend, impermanent loss, maturity, GoPlus security audit.</p>
+      </div>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-step">
+        <div class="step-icon">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+        </div>
+        <h3>Alert</h3>
+        <p>Pushes matching opportunities to Telegram, personalized to your risk tolerance and chain preferences.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scoring" id="scoring">
+  <div class="section-inner">
+    <h2>Risk scoring that actually works</h2>
+    <p class="lead">
+      High APY means nothing if the protocol rugs next week. We score every pool on six factors, not just yield.
+    </p>
+    <div class="tiers">
+      <div class="tier tier-safe">
+        <span class="tier-badge">🟢 Safe Yield</span>
+        <span class="tier-range">Score &gt; 100</span>
+        <p>Low volatility, high TVL, established protocol, positive trend. The boring ones that make money.</p>
+      </div>
+      <div class="tier tier-watch">
+        <span class="tier-badge">🟡 Watch</span>
+        <span class="tier-range">Score 50–100</span>
+        <p>Decent fundamentals but some risk factors. Worth monitoring, not blindly apeing into.</p>
+      </div>
+      <div class="tier tier-speculative">
+        <span class="tier-badge">🟠 Speculative</span>
+        <span class="tier-range">Score 20–50</span>
+        <p>High APY, higher risk. Newer protocols, volatile yields, or lower TVL. Know what you're getting into.</p>
+      </div>
+      <div class="tier tier-danger">
+        <span class="tier-badge">🔴 Danger Zone</span>
+        <span class="tier-range">Score &lt; 20</span>
+        <p>Red flags: honeypot patterns, malicious contracts, extreme volatility. We flag these so you don't find out the hard way.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="preview" id="preview">
+  <div class="section-inner">
+    <h2>What you get</h2>
+    <div class="telegram-mockup">
+      <div class="tg-header">
+        <span class="tg-bot-name">YieldRadar Bot</span>
+        <span class="tg-verified">✓</span>
+      </div>
+      <div class="tg-message">
+        <p class="tg-pool-name">Lido — stETH</p>
+        <div class="tg-details">
+          <div class="tg-detail">
+            <span class="tg-label">APY</span>
+            <span class="tg-value positive">3.2%</span>
+          </div>
+          <div class="tg-detail">
+            <span class="tg-label">TVL</span>
+            <span class="tg-value">$24.1B</span>
+          </div>
+          <div class="tg-detail">
+            <span class="tg-label">Risk</span>
+            <span class="tg-value safe">🟢 Safe</span>
+          </div>
+          <div class="tg-detail">
+            <span class="tg-label">7d Trend</span>
+            <span class="tg-value positive">↑ 0.3%</span>
+          </div>
+        </div>
+        <div class="tg-meta">Ethereum · Liquid Staking</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="getting-started" id="start">
+  <div class="section-inner">
+    <h2>Get started in 30 seconds</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-number">1</span>
+        <h3>Open Telegram</h3>
+        <p>Search for <strong>@yieldradar_bot</strong> or tap the button below.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <h3>Run /start</h3>
+        <p>Tell us your preferred chains, risk tolerance, and how often you want alerts.</p>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <h3>Done</h3>
+        <p>You'll start receiving yield opportunities matched to your criteria. No wallet needed. No KYC. No sign-up.</p>
+      </div>
+    </div>
+    <a href="https://t.me/yieldradar_bot" class="cta-primary" target="_blank" rel="noopener">
+      Open in Telegram →
+    </a>
+  </div>
+</section>
+
+<section class="chains" id="chains">
+  <div class="section-inner">
+    <h2>Chain coverage</h2>
+    <p class="lead">Monitoring pools across 6 chains — covering roughly 79% of all DeFiLlama yield markets.</p>
+    <div class="chain-grid">
+      <div class="chain-badge"><span class="chain-dot" style="background:#627EEA"></span>Ethereum</div>
+      <div class="chain-badge"><span class="chain-dot" style="background:#0052FF"></span>Base</div>
+      <div class="chain-badge"><span class="chain-dot" style="background:#14F195"></span>Solana</div>
+      <div class="chain-badge"><span class="chain-dot" style="background:#28A0F0"></span>Arbitrum</div>
+      <div class="chain-badge"><span class="chain-dot" style="background:#F0B90B"></span>BSC</div>
+      <div class="chain-badge"><span class="chain-dot" style="background:#8247E5"></span>Polygon</div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="section-inner">
+    <h2>Pricing</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Free</h3>
+        <div class="price">$0</div>
+        <ul>
+          <li>3 alerts per day</li>
+          <li>Basic chain and risk filters</li>
+          <li>Daily digest</li>
+          <li>All 6 chains</li>
+        </ul>
+      </div>
+      <div class="pricing-card pricing-pro">
+        <span class="pro-badge">Pro</span>
+        <h3>Unlimited</h3>
+        <div class="price">200 <span class="price-unit">Stars/mo</span></div>
+        <ul>
+          <li>Unlimited alerts</li>
+          <li>Custom filter rules</li>
+          <li>Min TVL and risk thresholds</li>
+          <li>Priority discovery</li>
+        </ul>
+        <a href="https://t.me/yieldradar_bot" class="cta-primary" target="_blank" rel="noopener">Subscribe →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="security" id="security">
+  <div class="section-inner">
+    <h2>Security</h2>
+    <div class="trust-grid">
+      <div class="trust-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <h3>Non-custodial</h3>
+        <p>We never touch your funds. No wallet connection, no private keys, no approvals.</p>
+      </div>
+      <div class="trust-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <h3>GoPlus security checks</h3>
+        <p>Every token is scanned for honeypot patterns, malicious contracts, and high-tax mechanisms.</p>
+      </div>
+      <div class="trust-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        <h3>Open source</h3>
+        <p>Code is public on GitHub. Audit it, self-host it, fork it. No black boxes.</p>
+      </div>
+      <div class="trust-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+        <h3>Self-hostable</h3>
+        <p>Run your own instance with Docker on a $5 VPS. Full control, full privacy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
