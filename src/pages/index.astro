@@ -88,6 +88,57 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   </div>
 </section>
 
+<section class="alternatives" id="alternatives">
+  <div class="section-inner">
+    <h2>Why not just use DeFiLlama?</h2>
+    <p class="lead">You can. But here's what happens when you do — and what YieldRadar does differently.</p>
+    <div class="alt-grid">
+      <div class="alt-row alt-header">
+        <span></span>
+        <span>DeFiLlama manual</span>
+        <span>Alpha Telegram groups</span>
+        <span class="alt-us">YieldRadar</span>
+      </div>
+      <div class="alt-row">
+        <span class="alt-feature">Risk scoring</span>
+        <span>None</span>
+        <span>Opinions only</span>
+        <span class="alt-us">6-factor model</span>
+      </div>
+      <div class="alt-row">
+        <span class="alt-feature">Security checks</span>
+        <span>Manual</span>
+        <span>Rarely</span>
+        <span class="alt-us">GoPlus automated</span>
+      </div>
+      <div class="alt-row">
+        <span class="alt-feature">Personalized filters</span>
+        <span>Basic</span>
+        <span>No</span>
+        <span class="alt-us">Chain, risk, TVL, APY</span>
+      </div>
+      <div class="alt-row">
+        <span class="alt-feature">Push notifications</span>
+        <span>No</span>
+        <span>Spam</span>
+        <span class="alt-us">Matched alerts only</span>
+      </div>
+      <div class="alt-row">
+        <span class="alt-feature">Time required</span>
+        <span>30 min/day</span>
+        <span>Hours of noise</span>
+        <span class="alt-us">30 sec setup</span>
+      </div>
+      <div class="alt-row">
+        <span class="alt-feature">Wallet needed?</span>
+        <span>No</span>
+        <span>No</span>
+        <span class="alt-us">No</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="scoring" id="scoring">
   <div class="section-inner">
     <h2>Risk scoring that actually works</h2>
@@ -122,34 +173,94 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 <section class="preview" id="preview">
   <div class="section-inner">
     <h2>What you get</h2>
-    <div class="telegram-mockup">
-      <div class="tg-header">
-        <span class="tg-bot-name">YieldRadar Bot</span>
-        <span class="tg-verified">✓</span>
-      </div>
-      <div class="tg-message">
-        <p class="tg-pool-name">Lido — stETH</p>
-        <div class="tg-details">
-          <div class="tg-detail">
-            <span class="tg-label">APY</span>
-            <span class="tg-value positive">3.2%</span>
-          </div>
-          <div class="tg-detail">
-            <span class="tg-label">TVL</span>
-            <span class="tg-value">$24.1B</span>
-          </div>
-          <div class="tg-detail">
-            <span class="tg-label">Risk</span>
-            <span class="tg-value safe">🟢 Safe</span>
-          </div>
-          <div class="tg-detail">
-            <span class="tg-label">7d Trend</span>
-            <span class="tg-value positive">↑ 0.3%</span>
-          </div>
+    <p class="lead">Real examples from live data — not hand-picked marketing.</p>
+    <div class="preview-grid">
+      <div class="tg-mockup">
+        <div class="tg-header">
+          <span class="tg-bot-name">YieldRadar Bot</span>
+          <span class="tg-verified">✓</span>
         </div>
-        <div class="tg-meta">Ethereum · Liquid Staking</div>
+        <div class="tg-message">
+          <p class="tg-pool-name">Aerodrome — USDC-AERO</p>
+          <div class="tg-details">
+            <div class="tg-detail">
+              <span class="tg-label">APY</span>
+              <span class="tg-value positive">19.1%</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">TVL</span>
+              <span class="tg-value">$22.3M</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">Risk</span>
+              <span class="tg-value watch">🟡 Watch</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">7d Trend</span>
+              <span class="tg-value positive">↑ 2.5%</span>
+            </div>
+          </div>
+          <div class="tg-meta">Base · LP / Yield Farming</div>
+        </div>
+      </div>
+      <div class="tg-mockup">
+        <div class="tg-header">
+          <span class="tg-bot-name">YieldRadar Bot</span>
+          <span class="tg-verified">✓</span>
+        </div>
+        <div class="tg-message">
+          <p class="tg-pool-name">Uniswap V4 — WETH-EAT</p>
+          <div class="tg-details">
+            <div class="tg-detail">
+              <span class="tg-label">APY</span>
+              <span class="tg-value positive">17.9%</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">TVL</span>
+              <span class="tg-value">$2.3M</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">Risk</span>
+              <span class="tg-value speculative">🟠 Speculative</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">7d Trend</span>
+              <span class="tg-value negative">↓ 16.4%</span>
+            </div>
+          </div>
+          <div class="tg-meta">Base · LP / Yield Farming</div>
+        </div>
+      </div>
+      <div class="tg-mockup">
+        <div class="tg-header">
+          <span class="tg-bot-name">YieldRadar Bot</span>
+          <span class="tg-badge-danger">⚠ FLAGGED</span>
+        </div>
+        <div class="tg-message">
+          <p class="tg-pool-name">Raydium — WSOL-RAY</p>
+          <div class="tg-details">
+            <div class="tg-detail">
+              <span class="tg-label">APY</span>
+              <span class="tg-value positive">47.1%</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">TVL</span>
+              <span class="tg-value danger">$1.1M</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">Risk</span>
+              <span class="tg-value danger">🔴 Danger</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">7d Trend</span>
+              <span class="tg-value negative">↑ volatile</span>
+            </div>
+          </div>
+          <div class="tg-meta">Solana · LP — Low TVL, extreme APY, memecoin pair</div>
+        </div>
       </div>
     </div>
+    <p class="preview-note">Live data from DeFiLlama · Updated every 5 minutes · Pools filtered and scored in real-time</p>
   </div>
 </section>
 
