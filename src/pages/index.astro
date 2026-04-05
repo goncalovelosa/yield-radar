@@ -144,6 +144,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     <h2>Risk scoring that actually works</h2>
     <p class="lead">
       High APY means nothing if the protocol rugs next week. We score every pool on six factors, not just yield.
+      <a href="/docs" style="color: var(--color-primary); text-decoration: underline; font-size: 0.9rem;">See the full methodology →</a>
     </p>
     <div class="tiers">
       <div class="tier tier-safe">
@@ -181,6 +182,34 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           <span class="tg-verified">✓</span>
         </div>
         <div class="tg-message">
+          <p class="tg-pool-name">Aave — USDC</p>
+          <div class="tg-details">
+            <div class="tg-detail">
+              <span class="tg-label">APY</span>
+              <span class="tg-value positive">8.2%</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">TVL</span>
+              <span class="tg-value">$1.2B</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">Risk</span>
+              <span class="tg-value safe">🟢 Safe</span>
+            </div>
+            <div class="tg-detail">
+              <span class="tg-label">7d Trend</span>
+              <span class="tg-value positive">↑ 0.3%</span>
+            </div>
+          </div>
+          <div class="tg-meta">Ethereum · Lending</div>
+        </div>
+      </div>
+      <div class="tg-mockup">
+        <div class="tg-header">
+          <span class="tg-bot-name">YieldRadar Bot</span>
+          <span class="tg-verified">✓</span>
+        </div>
+        <div class="tg-message">
           <p class="tg-pool-name">Aerodrome — USDC-AERO</p>
           <div class="tg-details">
             <div class="tg-detail">
@@ -198,34 +227,6 @@ import BaseLayout from '../layouts/BaseLayout.astro'
             <div class="tg-detail">
               <span class="tg-label">7d Trend</span>
               <span class="tg-value positive">↑ 2.5%</span>
-            </div>
-          </div>
-          <div class="tg-meta">Base · LP / Yield Farming</div>
-        </div>
-      </div>
-      <div class="tg-mockup">
-        <div class="tg-header">
-          <span class="tg-bot-name">YieldRadar Bot</span>
-          <span class="tg-verified">✓</span>
-        </div>
-        <div class="tg-message">
-          <p class="tg-pool-name">Uniswap V4 — WETH-EAT</p>
-          <div class="tg-details">
-            <div class="tg-detail">
-              <span class="tg-label">APY</span>
-              <span class="tg-value positive">17.9%</span>
-            </div>
-            <div class="tg-detail">
-              <span class="tg-label">TVL</span>
-              <span class="tg-value">$2.3M</span>
-            </div>
-            <div class="tg-detail">
-              <span class="tg-label">Risk</span>
-              <span class="tg-value speculative">🟠 Speculative</span>
-            </div>
-            <div class="tg-detail">
-              <span class="tg-label">7d Trend</span>
-              <span class="tg-value negative">↓ 16.4%</span>
             </div>
           </div>
           <div class="tg-meta">Base · LP / Yield Farming</div>
@@ -331,7 +332,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           <li>Min TVL and risk thresholds</li>
           <li>7d / 30d APY trend data</li>
           <li>Volatility &amp; decay tracking</li>
-          <li>Priority discovery</li>
+          <li>Early access to new features</li>
         </ul>
         <a href="https://t.me/yieldradar_bot" class="cta-primary" target="_blank" rel="noopener">Subscribe →</a>
       </div>
@@ -369,13 +370,13 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       </div>
       <div class="trust-item">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-        <h3>Open source</h3>
-        <p>Code is public on <a href="https://github.com/goncalovelosa/yield-radar" target="_blank" rel="noopener" style="color: var(--color-primary); text-decoration: underline;">GitHub</a>. Audit it, self-host it, fork it. No black boxes.</p>
+        <h3>Transparent codebase</h3>
+        <p>The website is open source on <a href="https://github.com/goncalovelosa/yield-radar" target="_blank" rel="noopener" style="color: var(--color-primary); text-decoration: underline;">GitHub</a>. The bot engine follows the same transparent principles — no black boxes.</p>
       </div>
       <div class="trust-item">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
-        <h3>Self-hostable</h3>
-        <p>Run your own instance with Docker on a $5 VPS. Full control, full privacy.</p>
+        <h3>Lightweight infrastructure</h3>
+        <p>Runs on a single VPS with Docker. Low resource footprint, fast restarts, minimal attack surface.</p>
       </div>
     </div>
   </div>
@@ -430,7 +431,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </ul>
       </div>
       <div class="roadmap-column">
-        <h3>🔄 Next up (v1.2)</h3>
+        <h3>🔄 Next up (v1.2 — Q2 2026)</h3>
         <ul>
           <li>Expanded chains: Optimism, Avalanche, Hyperliquid, Sui</li>
           <li>Launch pricing — $9.99/mo (locks in forever)</li>
@@ -439,7 +440,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </ul>
       </div>
       <div class="roadmap-column">
-        <h3>🔮 Planned (v2.0)</h3>
+        <h3>🔮 Planned (v2.0 — H2 2026)</h3>
         <ul>
           <li>Yield collapse prediction (LSTM anomaly detection)</li>
           <li>Social sentiment signals (crypto Twitter / Reddit)</li>
@@ -462,6 +463,46 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       Have a feature request?
       <a href="https://github.com/goncalovelosa/yield-radar/issues/new" target="_blank" rel="noopener" style="color: var(--color-primary); text-decoration: underline;">Open an issue on GitHub</a>.
     </p>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>What is DeFi yield farming?</summary>
+        <p>DeFi (Decentralized Finance) yield farming means lending your crypto or providing liquidity to decentralized protocols in exchange for interest (APY). Think of it like a savings account, but with higher returns — and higher risk. You always stay in control of your funds.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to connect a wallet or send funds?</summary>
+        <p>No. YieldRadar only sends you information — alerts about yield opportunities. We never touch your funds, never ask for private keys, and never require a wallet connection. You decide what to do with the information.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What chains are supported?</summary>
+        <p>We currently monitor pools on Ethereum, Base, Solana, Arbitrum, BSC, and Polygon — covering over 75% of all DeFi TVL. Optimism, Avalanche, Hyperliquid, and Sui are coming in the next update.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How does the risk scoring work?</summary>
+        <p>Every pool is scored 0–100 based on six factors: APY volatility, TVL quality, 7-day trend, impermanent loss risk, pool maturity, and GoPlus token security analysis. Each factor has a specific weight in the composite score. <a href="/docs">See the full methodology →</a></p>
+      </details>
+      <details class="faq-item">
+        <summary>How do I pay for Pro?</summary>
+        <p>Pro is paid via Telegram Stars — Telegram's built-in payment system. You can purchase Stars directly in Telegram using Apple Pay, Google Pay, or a credit card. No crypto wallet needed.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What's the difference between Free and Pro?</summary>
+        <p>Free gives you 3 alerts per day with basic filters — enough to try the bot and see what it finds. Pro gives you unlimited alerts, custom filter rules (minimum TVL, risk thresholds, asset types), 7-day and 30-day APY trend data, and volatility tracking.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Will the $9.99 price really last forever?</summary>
+        <p>Yes. If you subscribe during the launch period at $9.99/mo, that price is locked in permanently — even after the standard price increases to $14.99/mo. Early adopters are grandfathered at the launch price forever.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How often does the bot scan for new opportunities?</summary>
+        <p>Every 5 minutes. We pull fresh data from DeFiLlama, run all pools through our quality filters and risk scoring model, and push matching opportunities directly to your Telegram.</p>
+      </details>
+    </div>
   </div>
 </section>
 
