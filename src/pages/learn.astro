@@ -1,7 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
-<BaseLayout title="DeFi Yield Farming Guide — YieldRadar" description="Learn DeFi yield farming fundamentals: what is TVL, impermanent loss, APY vs APR, risk scoring, liquid staking, and how to avoid scams. A practical guide for DeFi investors.">
+<BaseLayout title="DeFi Yield Farming Guide — YieldRadar" description="Learn DeFi yield farming — TVL, impermanent loss, risk scoring, APY strategies, and how to evaluate pool safety. Beginner-friendly guide.">
+
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yieldradar.io" },
+    { "@type": "ListItem", "position": 2, "name": "Learn", "item": "https://yieldradar.io/learn" }
+  ]
+})} />
 
 <section class="hero" style="padding: 3rem 0 1rem;">
   <div class="section-inner">

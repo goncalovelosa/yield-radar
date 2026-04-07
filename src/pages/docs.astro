@@ -1,68 +1,469 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 ---
-<BaseLayout title="YieldRadar" description="Technical documentation and architecture details">
+<BaseLayout title="YieldRadar Documentation — Methodology & Architecture" description="YieldRadar technical documentation: risk scoring formula, data pipeline architecture, risk tier definitions, and security methodology.">
 
-# Docs
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://yieldradar.io" },
+    { "@type": "ListItem", "position": 2, "name": "Docs", "item": "https://yieldradar.io/docs" }
+  ]
+})} />
 
-## Tech stack
+<section style="padding: 3rem 0 1rem;">
+  <div class="section-inner">
+    <h1>Documentation</h1>
+    <p class="lead">How YieldRadar scores risk, filters pools, and delivers alerts. Everything documented — no black box.</p>
+  </div>
+</section>
 
-- **Runtime:** Node.js 24 with TypeScript (ESM, strict mode)
-- **Bot framework:** Grammy with conversations plugin
-- **Database:** SQLite (better-sqlite3, WAL mode)
-- **Testing:** Vitest (504 tests)
-- **Deployment:** Docker, multi-stage build
+<section class="section-inner docs-section">
+  <h2>Tech stack</h2>
+  <dl class="docs-deflist">
+    <dt>Runtime</dt>
+    <dd>Node.js 24 with TypeScript (ESM, strict mode)</dd>
+    <dt>Bot framework</dt>
+    <dd>Grammy with conversations plugin</dd>
+    <dt>Database</dt>
+    <dd>SQLite (better-sqlite3, WAL mode)</dd>
+    <dt>Testing</dt>
+    <dd>Vitest (504 tests)</dd>
+    <dt>Deployment</dt>
+    <dd>Docker, multi-stage build</dd>
+  </dl>
+</section>
 
-## Architecture
+<section class="section-inner docs-section">
+  <h2>Architecture</h2>
+  <div class="pipeline">
+    <div class="pipeline-step">
+      <div class="step-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <h3>Fetch</h3>
+      <p>DeFiLlama API — every 5 minutes</p>
+    </div>
+    <div class="pipeline-arrow">→</div>
+    <div class="pipeline-step">
+      <div class="step-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+      </div>
+      <h3>Filter</h3>
+      <p>Quality gates — TVL, outliers, APY</p>
+    </div>
+    <div class="pipeline-arrow">→</div>
+    <div class="pipeline-step">
+      <div class="step-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+      </div>
+      <h3>Cache</h3>
+      <p>SQLite with WAL mode</p>
+    </div>
+    <div class="pipeline-arrow">→</div>
+    <div class="pipeline-step">
+      <div class="step-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m8 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6m0 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14"/></svg>
+      </div>
+      <h3>Score</h3>
+      <p>6-factor risk model (0–100)</p>
+    </div>
+    <div class="pipeline-arrow">→</div>
+    <div class="pipeline-step">
+      <div class="step-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+      </div>
+      <h3>Alert</h3>
+      <p>Matched to user preferences → Telegram</p>
+    </div>
+  </div>
+  <p class="docs-note">Data flows in one direction. The bot polls DeFiLlama every 5 minutes, filters down to ~3,800 eligible pools, scores each one on six risk factors, and pushes matches to subscribed users.</p>
+</section>
 
-```
-DeFiLlama API → Fetcher → Filter → SQLite Cache → Risk Scoring → Alert Engine → Telegram
-```
+<section class="section-inner docs-section">
+  <h2>Data pipeline — filtering in detail</h2>
+  <p>The raw DeFiLlama dataset contains ~18,632 pools. Not all of them are worth analyzing. Here's the filtering pipeline:</p>
 
-Data flows in one direction. The bot polls DeFiLlama every 5 minutes, filters down to ~3,800 eligible pools, scores each one on six risk factors, and pushes matches to subscribed users.
+  <div class="docs-steps">
+    <div class="docs-step">
+      <span class="docs-step-num">1</span>
+      <div>
+        <h3>Raw data</h3>
+        <p><strong>18,632 pools</strong> fetched from DeFiLlama every 5 minutes — APY, TVL, 7d APY change, chain, protocol, and token addresses across all supported chains.</p>
+      </div>
+    </div>
+    <div class="docs-step">
+      <span class="docs-step-num">2</span>
+      <div>
+        <h3>Hard filters</h3>
+        <p>Pools must meet all of these criteria to proceed:</p>
+        <ul>
+          <li><strong>TVL ≥ $500K</strong> — removes micro-liquidity pools</li>
+          <li><strong>Outlier == false</strong> — DeFiLlama's own outlier flag filters anomalous data</li>
+          <li><strong>APY > 0</strong> — removes pools with zero or negative yield</li>
+          <li><strong>7d change > -50%</strong> — removes collapsing pools</li>
+        </ul>
+      </div>
+    </div>
+    <div class="docs-step">
+      <span class="docs-step-num">3</span>
+      <div>
+        <h3>After filtering</h3>
+        <p><strong>~3,800 eligible pools</strong> remain — roughly 20% of the raw dataset. These are the pools that enter the risk scoring engine.</p>
+      </div>
+    </div>
+    <div class="docs-step">
+      <span class="docs-step-num">4</span>
+      <div>
+        <h3>Scoring</h3>
+        <p>Each eligible pool receives a <strong>6-factor composite score</strong> (0–100). See the risk scoring model below for the formula.</p>
+      </div>
+    </div>
+    <div class="docs-step">
+      <span class="docs-step-num">5</span>
+      <div>
+        <h3>Alert delivery</h3>
+        <p>Scored pools are matched against each user's preferences (chain, risk tolerance, minimum TVL, APY range) and pushed as individual alerts or included in the daily digest.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-## Risk scoring model
+<section class="section-inner docs-section">
+  <h2>Risk scoring model</h2>
+  <p>Each pool receives a composite score based on six weighted factors. The score is normalized to a 0–100 scale where higher is safer.</p>
 
-Each pool receives a composite score based on:
+  <h3>The formula</h3>
+  <div class="docs-formula">
+    <p><code>rawScore = APY / max(sigma, 0.01)</code></p>
+    <p class="formula-note">where <strong>sigma</strong> is the standard deviation of APY over available snapshots — measures yield stability</p>
 
-| Factor | Weight | Source |
-|--------|--------|--------|
-| APY / volatility | Base formula | DeFiLlama |
-| TVL quality | Multiplier | DeFiLlama |
-| 7-day trend | Multiplier | DeFiLlama |
-| Impermanent loss | 0.5x penalty | DeFiLlama |
-| Pool maturity | Multiplier | Internal (snapshot count) |
-| Token security | 0.0–1.0 multiplier | GoPlus API |
-| Protocol metadata | Tier classification | DeFiLlama protocols |
+    <p><code>riskAdjustedScore = rawScore × TVL_multiplier × trend_multiplier × IL_multiplier × maturity_multiplier × security_multiplier</code></p>
+    <p class="formula-note">each multiplier adjusts the raw score up or down based on pool-specific risk factors</p>
 
-## Self-hosting
+    <p><code>normalizedScore = scale(riskAdjustedScore, 0, 100)</code></p>
+    <p class="formula-note">linear scaling to the 0–100 range for consistent tier classification</p>
+  </div>
 
-Self-hosted instances will be supported in a future release. The bot is currently available as a hosted service via Telegram.
+  <h3>Worked example</h3>
+  <div class="docs-example">
+    <p><strong>Pool:</strong> Aave — USDC on Ethereum</p>
+    <ul>
+      <li>APY: 12% (stable, sigma = 0.3)</li>
+      <li>TVL: $50M (large, deep liquidity)</li>
+      <li>7d trend: slightly positive</li>
+      <li>Impermanent loss: none (single-asset lending)</li>
+      <li>Maturity: 60+ days of snapshots</li>
+      <li>GoPlus token security score: 95/100</li>
+    </ul>
+    <p><strong>Calculation:</strong></p>
+    <ul>
+      <li><code>rawScore = 12 / max(0.3, 0.01) = 40.0</code></li>
+      <li>TVL multiplier: 1.0 (large cap)</li>
+      <li>Trend multiplier: 1.0 (stable)</li>
+      <li>IL multiplier: 1.0 (no IL for lending)</li>
+      <li>Maturity multiplier: 1.0 (established)</li>
+      <li>Security multiplier: 0.95 (GoPlus score)</li>
+      <li><code>riskAdjustedScore = 40.0 × 1.0 × 1.0 × 1.0 × 1.0 × 0.95 = 38.0</code></li>
+      <li><strong>Normalized score: ~85 (Safe Yield tier)</strong></li>
+    </ul>
+  </div>
 
-```bash
-# Coming soon — self-hosting documentation
-```
+  <h3>Factor breakdown</h3>
+  <div class="docs-table-wrap">
+    <table class="docs-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Type</th>
+          <th>Source</th>
+          <th>What it measures</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>APY / volatility</td>
+          <td>Base formula</td>
+          <td>DeFiLlama</td>
+          <td>Yield adjusted for stability — high APY with high volatility scores lower</td>
+        </tr>
+        <tr>
+          <td>TVL quality</td>
+          <td>Multiplier</td>
+          <td>DeFiLlama</td>
+          <td>Deeper liquidity = more scrutiny, harder to manipulate</td>
+        </tr>
+        <tr>
+          <td>7-day trend</td>
+          <td>Multiplier</td>
+          <td>DeFiLlama</td>
+          <td>Rising or stable APY is positive; sharp drops are penalized</td>
+        </tr>
+        <tr>
+          <td>Impermanent loss</td>
+          <td>0.5x penalty</td>
+          <td>DeFiLlama</td>
+          <td>LP pairs with volatile tokens face IL risk</td>
+        </tr>
+        <tr>
+          <td>Pool maturity</td>
+          <td>Multiplier</td>
+          <td>Internal (snapshot count)</td>
+          <td>Newer pools get lower scores — insufficient track record</td>
+        </tr>
+        <tr>
+          <td>Token security</td>
+          <td>0.0–1.0 multiplier</td>
+          <td>GoPlus API</td>
+          <td>Honeypot detection, malicious contract scan, token tax analysis</td>
+        </tr>
+        <tr>
+          <td>Protocol metadata</td>
+          <td>Tier classification</td>
+          <td>DeFiLlama protocols</td>
+          <td>Audit status, protocol age, and category factor into risk</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
-## API sources
+<section class="section-inner docs-section">
+  <h2>Risk tiers</h2>
+  <p>Every scored pool is classified into one of four tiers:</p>
 
-- **DeFiLlama** — Pool data, APY, TVL, protocol metadata
-- **GoPlus** — Token security analysis (honeypot, malicious contracts, tax)
+  <dl class="tiers">
+    <div class="tier tier-safe">
+      <dt><span class="tier-badge">Safe Yield</span> <span class="tier-range">Score 75–100</span></dt>
+      <dd>Low volatility, high TVL, established protocols with positive or stable trends. These are typically blue-chip lending pools (Aave, Compound) or major DEX stablecoin pairs with consistent, revenue-based yields. The boring ones that make money reliably.</dd>
+    </div>
+    <div class="tier tier-watch">
+      <dt><span class="tier-badge">Watch</span> <span class="tier-range">Score 50–74</span></dt>
+      <dd>Decent fundamentals but with moderate risk factors. May have some APY volatility, slightly lower TVL, or newer protocols without a long track record. Worth monitoring — not blindly entering. Many good opportunities live here, but require attention.</dd>
+    </div>
+    <div class="tier tier-speculative">
+      <dt><span class="tier-badge">Speculative</span> <span class="tier-range">Score 25–49</span></dt>
+      <dd>High APY but elevated risk across multiple factors. Often newer protocols, volatile yields, lower TVL, or token pairs with impermanent loss risk. Can be profitable for experienced users who understand the risks and actively manage positions.</dd>
+    </div>
+    <div class="tier tier-danger">
+      <dt><span class="tier-badge">Danger Zone</span> <span class="tier-range">Score 0–24</span></dt>
+      <dd>Multiple red flags: honeypot patterns detected by GoPlus, malicious contract signatures, extremely low TVL, extreme APY volatility, or negative trends. We flag these so you can avoid them — not because they can't pay out, but because the risk of total loss is significant.</dd>
+    </div>
+  </dl>
+</section>
 
-## Changelog
+<section class="section-inner docs-section">
+  <h2>API sources</h2>
+  <dl class="docs-deflist">
+    <dt>DeFiLlama</dt>
+    <dd>Primary data source — pool data, APY, TVL, 7d APY change, protocol metadata, audit status, and chain information. Polled every 5 minutes.</dd>
+    <dt>GoPlus Security</dt>
+    <dd>Token-level security analysis — honeypot detection, malicious contract scanning, transfer tax analysis, and token safety scoring. Integrated as a weighted factor in the composite risk score, not just a pass/fail check.</dd>
+  </dl>
+</section>
 
-### v1.1 (April 2026)
-- Normalized 0-100 risk scoring
-- GoPlus Security API integration
-- DeFiLlama protocol metadata enrichment
-- APY historical snapshots and trend analytics
-- Telegram Stars subscription payments
-- Launch pricing: Pro $9.99/mo (early adopters grandfathered)
-
-### v1.0 (March 2026)
-- Data pipeline with 5-minute polling
-- Multi-factor risk scoring with 4-tier labels
-- Telegram bot with onboarding, alerts, digest, settings
-- User management with freemium tiers
-- Docker deployment with health monitoring
+<section class="section-inner docs-section" style="padding-bottom: 3rem;">
+  <div style="background: var(--color-surface); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center;">
+    <h2>Try it yourself</h2>
+    <p style="margin: 1rem 0; color: var(--color-text-muted);">See the risk scoring in action — every alert includes the full score breakdown. <a href="https://t.me/yieldradar_bot" style="color: var(--color-primary); text-decoration: underline;">Start free on Telegram</a>.</p>
+    <a href="https://t.me/yieldradar_bot" class="cta-primary" target="_blank" rel="noopener">Open in Telegram →</a>
+  </div>
+</section>
 
 </BaseLayout>
+
+<style>
+  .docs-section {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .docs-section:last-child {
+    border-bottom: none;
+  }
+  .docs-section h2 {
+    margin-bottom: 1rem;
+  }
+  .docs-section h3 {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.75rem;
+  }
+  .docs-section p {
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  .docs-section ul {
+    margin: 0.5rem 0 1rem;
+    padding-left: 1.2rem;
+  }
+  .docs-section li {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.3rem;
+  }
+
+  .docs-deflist {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.5rem 1.5rem;
+    margin: 1rem 0;
+  }
+  .docs-deflist dt {
+    font-weight: 600;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+  .docs-deflist dd {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .docs-note {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-top: 1.5rem;
+  }
+
+  .docs-formula {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin: 1rem 0;
+  }
+  .docs-formula p {
+    margin-bottom: 0.5rem;
+  }
+  .docs-formula code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    background: var(--color-bg-alt);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  .formula-note {
+    font-size: 0.85rem !important;
+    color: var(--color-text-muted) !important;
+    margin-bottom: 1rem !important;
+    padding-left: 1rem;
+    border-left: 2px solid var(--color-border);
+  }
+
+  .docs-example {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin: 1rem 0;
+  }
+  .docs-example p {
+    margin-bottom: 0.5rem;
+  }
+  .docs-example strong {
+    color: var(--color-text);
+  }
+  .docs-example code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    background: var(--color-bg-alt);
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+  }
+
+  .docs-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .docs-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+  }
+  .docs-step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+  .docs-step h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+  }
+  .docs-step p {
+    margin: 0;
+    font-size: 0.9rem;
+  }
+  .docs-step ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1rem;
+  }
+  .docs-step li {
+    font-size: 0.85rem;
+  }
+
+  .docs-table-wrap {
+    overflow-x: auto;
+    margin: 1rem 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  .docs-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 0.9rem;
+  }
+  .docs-table th,
+  .docs-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .docs-table th {
+    font-weight: 600;
+    background: var(--color-bg-alt);
+    color: var(--color-text);
+    font-size: 0.85rem;
+  }
+  .docs-table td {
+    color: var(--color-text-muted);
+  }
+  .docs-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  @media (max-width: 640px) {
+    .docs-deflist {
+      grid-template-columns: 1fr;
+      gap: 0.25rem;
+    }
+    .docs-deflist dt {
+      margin-top: 0.75rem;
+    }
+    .docs-formula, .docs-example {
+      padding: 1rem;
+    }
+    .docs-formula code, .docs-example code {
+      font-size: 0.8rem;
+      word-break: break-all;
+    }
+  }
+</style>
