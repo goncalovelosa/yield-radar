@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="Changelog — YieldRadar" description="YieldRadar release history: risk scoring improvements, security integrations, new features, and bug fixes.">
+
+<section style="padding: 3rem 0 1rem;">
+  <div class="section-inner">
+    <h1>Changelog</h1>
+    <p class="lead">Release history for YieldRadar — what shipped, what changed, and what was fixed.</p>
+  </div>
+</section>
+
+<section class="section-inner">
+  <div class="changelog-entry">
+    <div class="changelog-header">
+      <span class="changelog-version">v1.2</span>
+      <span class="changelog-date">April 2026</span>
+      <span class="changelog-badge">Latest</span>
+    </div>
+    <div class="changelog-body">
+      <h3>Features</h3>
+      <ul>
+        <li>Alert deduplication with persistent tracking — no more duplicate notifications for the same pool within a scan cycle</li>
+        <li>Minimum APY filter — set a floor to only receive alerts above your target yield</li>
+        <li>Data export — export your alert history and pool data for personal analysis</li>
+      </ul>
+      <h3>Improvements</h3>
+      <ul>
+        <li>GoPlus authentication flow rewritten for reliability — fewer failed security checks during high-load periods</li>
+        <li>API audit fixes across the data pipeline — improved error handling and retry logic for DeFiLlama fetches</li>
+        <li>Alert message formatting improvements with inline action buttons</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="changelog-entry">
+    <div class="changelog-header">
+      <span class="changelog-version">v1.1</span>
+      <span class="changelog-date">April 2026</span>
+    </div>
+    <div class="changelog-body">
+      <h3>Features</h3>
+      <ul>
+        <li>Normalized 0–100 risk scoring with four-tier classification (Safe, Watch, Speculative, Danger)</li>
+        <li>GoPlus Security API integration — automated honeypot detection, malicious contract scanning, and token tax analysis</li>
+        <li>DeFiLlama protocol metadata enrichment — TVL, audit status, and protocol age factor into risk scores</li>
+        <li>APY historical snapshots with 7-day and 30-day trend analytics</li>
+        <li>Telegram Stars subscription payments — pay for Pro directly in Telegram</li>
+        <li>Launch pricing: Pro tier at $9.99/mo, locked in permanently for early adopters</li>
+      </ul>
+      <h3>Improvements</h3>
+      <ul>
+        <li>Deep-dive command with yield breakdown, risk factor analysis, and similar pool suggestions</li>
+        <li>Daily digest with top 3 opportunities, rising APY alerts, and yield warnings</li>
+        <li>Settings flow for chain preferences, risk tolerance, and alert frequency</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="changelog-entry">
+    <div class="changelog-header">
+      <span class="changelog-version">v1.0</span>
+      <span class="changelog-date">March 2026</span>
+    </div>
+    <div class="changelog-body">
+      <h3>Features</h3>
+      <ul>
+        <li>Data pipeline with 5-minute polling from DeFiLlama across 6 chains (Ethereum, Base, Solana, Arbitrum, BSC, Polygon)</li>
+        <li>Multi-factor risk scoring engine with 6 weighted factors per pool</li>
+        <li>Telegram bot with onboarding flow, real-time alerts, daily digest, deep-dive analysis, and settings</li>
+        <li>User management with freemium tiers (Free: 10 alerts/day, Pro: unlimited)</li>
+        <li>Docker deployment with multi-stage build and health monitoring</li>
+      </ul>
+      <h3>Infrastructure</h3>
+      <ul>
+        <li>SQLite (better-sqlite3, WAL mode) for persistent storage</li>
+        <li>Grammy bot framework with conversations plugin</li>
+        <li>Node.js 24 with TypeScript (ESM, strict mode)</li>
+        <li>Vitest test suite (504 tests)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+  .changelog-entry {
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    background: var(--color-card);
+  }
+  .changelog-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .changelog-version {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+  .changelog-date {
+    color: var(--color-text-secondary, var(--color-text));
+    font-size: 0.9rem;
+  }
+  .changelog-badge {
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .changelog-body h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem 0;
+    color: var(--color-text);
+  }
+  .changelog-body h3:first-child {
+    margin-top: 0;
+  }
+  .changelog-body ul {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+  .changelog-body li {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0.4rem;
+    color: var(--color-text-secondary, var(--color-text));
+  }
+</style>

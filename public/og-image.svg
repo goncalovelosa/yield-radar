@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0e17"/>
+      <stop offset="100%" style="stop-color:#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Radar circles -->
+  <circle cx="600" cy="280" r="180" fill="none" stroke="#10b981" stroke-width="1" opacity="0.15"/>
+  <circle cx="600" cy="280" r="130" fill="none" stroke="#10b981" stroke-width="1" opacity="0.2"/>
+  <circle cx="600" cy="280" r="80" fill="none" stroke="#10b981" stroke-width="1" opacity="0.3"/>
+  <circle cx="600" cy="280" r="30" fill="none" stroke="#10b981" stroke-width="2" opacity="0.5"/>
+  <!-- Radar crosshairs -->
+  <line x1="600" y1="100" x2="600" y2="460" stroke="#10b981" stroke-width="1" opacity="0.1"/>
+  <line x1="420" y1="280" x2="780" y2="280" stroke="#10b981" stroke-width="1" opacity="0.1"/>
+  <!-- Sweep line -->
+  <line x1="600" y1="280" x2="720" y2="160" stroke="#10b981" stroke-width="2" opacity="0.4"/>
+  <circle cx="720" cy="160" r="4" fill="#10b981" opacity="0.8"/>
+  <!-- Blips -->
+  <circle cx="540" cy="220" r="3" fill="#10b981" opacity="0.6"/>
+  <circle cx="680" cy="240" r="3" fill="#10b981" opacity="0.6"/>
+  <circle cx="580" cy="340" r="3" fill="#10b981" opacity="0.6"/>
+  <circle cx="650" cy="310" r="3" fill="#10b981" opacity="0.4"/>
+  <!-- Title -->
+  <text x="600" y="520" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700" fill="#f9fafb">YieldRadar</text>
+  <!-- Tagline -->
+  <text x="600" y="565" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="400" fill="#9ca3af">DeFi Yield Intelligence — Risk Scored, Pushed to Telegram</text>
+  <!-- Bottom accent line -->
+  <rect x="520" y="590" width="160" height="3" rx="1.5" fill="url(#accent)" opacity="0.6"/>
+</svg>

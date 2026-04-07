@@ -3,7 +3,102 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 <BaseLayout title="YieldRadar - DeFi yield intelligence with multi-factor risk scoring">
 
-<section class="hero">
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is DeFi yield farming?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DeFi (Decentralized Finance) yield farming means lending your crypto or providing liquidity to decentralized protocols in exchange for interest (APY). Think of it like a savings account, but with higher returns — and higher risk. You always stay in control of your funds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to connect a wallet or send funds?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. YieldRadar only sends you information — alerts about yield opportunities. We never touch your funds, never ask for private keys, and never require a wallet connection. You decide what to do with the information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What chains are supported?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We currently monitor pools on Ethereum, Base, Solana, Arbitrum, BSC, and Polygon — covering over 75% of all DeFi TVL. More chains are planned for future updates."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the risk scoring work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every pool is scored 0–100 based on six factors: APY volatility, TVL quality, 7-day trend, impermanent loss risk, pool maturity, and GoPlus token security analysis. Each factor has a specific weight in the composite score."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I pay for Pro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pro is paid via Telegram Stars — Telegram's built-in payment system. You can purchase Stars directly in Telegram using Apple Pay, Google Pay, or a credit card. No crypto wallet needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between Free and Pro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Free gives you 10 alerts per day with basic filters — enough to try the bot and see what it finds. Pro gives you unlimited alerts, custom filter rules (minimum TVL, risk thresholds, asset types), 7-day and 30-day APY trend data, and volatility tracking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will the $9.99 price really last forever?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. If you subscribe during the launch period at $9.99/mo, that price is locked in permanently — even after the standard price increases to $14.99/mo. Early adopters are grandfathered at the launch price forever."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often does the bot scan for new opportunities?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every 5 minutes. We pull fresh data from DeFiLlama, run all pools through our quality filters and risk scoring model, and push matching opportunities directly to your Telegram."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the daily digest include?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A consolidated daily report with the top 3 opportunities, pools with rising APY (20%+ jumps), and yield warnings for volatile or crashing pools. Each pool comes with inline buttons for Details, Invest, and Mute."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the alert buttons?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every alert has three inline buttons: Details (opens a deep-dive analysis with yield breakdown, risk factors, and similar pools), Invest (links directly to the pool on DeFiLlama), and Mute (silences alerts for that pool)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I invest in a pool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tap the Invest button on any alert — it links directly to the pool on DeFiLlama where you can connect your wallet and deposit. No funds ever pass through YieldRadar. We only provide information."
+      }
+    }
+  ]
+})} />
+
+<section class="hero" role="banner">
   <div class="hero-inner">
     <h1>
       <span class="hero-stat">18,632 yield pools</span> on DeFiLlama.
@@ -88,11 +183,11 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   </div>
 </section>
 
-<section class="alternatives" id="alternatives">
+<section class="alternatives" id="alternatives" role="region" aria-label="Comparison with alternatives">
   <div class="section-inner">
     <h2>Why not just use DeFiLlama?</h2>
     <p class="lead">You can. But here's what happens when you do — and what YieldRadar does differently.</p>
-    <div class="alt-grid">
+    <div class="alt-grid" role="table" aria-label="Feature comparison">
       <div class="alt-row alt-header">
         <span></span>
         <span>DeFiLlama manual</span>
@@ -139,35 +234,31 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   </div>
 </section>
 
-<section class="scoring" id="scoring">
+<section class="scoring" id="scoring" role="region" aria-label="Risk scoring tiers">
   <div class="section-inner">
     <h2>Risk scoring that actually works</h2>
     <p class="lead">
       High APY means nothing if the protocol rugs next week. We score every pool on six factors, not just yield.
       <a href="/docs" style="color: var(--color-primary); text-decoration: underline; font-size: 0.9rem;">See the full methodology →</a>
     </p>
-    <div class="tiers">
+    <dl class="tiers">
       <div class="tier tier-safe">
-        <span class="tier-badge">🟢 Safe Yield</span>
-        <span class="tier-range">Score 75–100</span>
-        <p>Low volatility, high TVL, established protocol, positive trend. The boring ones that make money.</p>
+        <dt><span class="tier-badge">🟢 Safe Yield</span> <span class="tier-range">Score 75–100</span></dt>
+        <dd>Low volatility, high TVL, established protocol, positive trend. The boring ones that make money.</dd>
       </div>
       <div class="tier tier-watch">
-        <span class="tier-badge">🟡 Watch</span>
-        <span class="tier-range">Score 50–74</span>
-        <p>Decent fundamentals but some risk factors. Worth monitoring, not blindly apeing into.</p>
+        <dt><span class="tier-badge">🟡 Watch</span> <span class="tier-range">Score 50–74</span></dt>
+        <dd>Decent fundamentals but some risk factors. Worth monitoring, not blindly apeing into.</dd>
       </div>
       <div class="tier tier-speculative">
-        <span class="tier-badge">🟠 Speculative</span>
-        <span class="tier-range">Score 25–49</span>
-        <p>High APY, higher risk. Newer protocols, volatile yields, or lower TVL. Know what you're getting into.</p>
+        <dt><span class="tier-badge">🟠 Speculative</span> <span class="tier-range">Score 25–49</span></dt>
+        <dd>High APY, higher risk. Newer protocols, volatile yields, or lower TVL. Know what you're getting into.</dd>
       </div>
       <div class="tier tier-danger">
-        <span class="tier-badge">🔴 Danger Zone</span>
-        <span class="tier-range">Score 0–24</span>
-        <p>Red flags: honeypot patterns, malicious contracts, extreme volatility. We flag these so you don't find out the hard way.</p>
+        <dt><span class="tier-badge">🔴 Danger Zone</span> <span class="tier-range">Score 0–24</span></dt>
+        <dd>Red flags: honeypot patterns, malicious contracts, extreme volatility. We flag these so you don't find out the hard way.</dd>
       </div>
-    </div>
+    </dl>
   </div>
 </section>
 
@@ -321,7 +412,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   </div>
 </section>
 
-<section class="pricing" id="pricing">
+<section class="pricing" id="pricing" role="region" aria-label="Pricing plans">
   <div class="section-inner">
     <h2>Pricing</h2>
     <div class="pricing-grid">
@@ -467,7 +558,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   </div>
 </section>
 
-<section class="faq" id="faq">
+<section class="faq" id="faq" role="region" aria-label="Frequently asked questions">
   <div class="section-inner">
     <h2>Frequently asked questions</h2>
     <div class="faq-list">

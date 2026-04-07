@@ -1,0 +1,216 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+<BaseLayout title="DeFi Yield Farming Guide — YieldRadar" description="Learn DeFi yield farming fundamentals: what is TVL, impermanent loss, APY vs APR, risk scoring, liquid staking, and how to avoid scams. A practical guide for DeFi investors.">
+
+<section class="hero" style="padding: 3rem 0 1rem;">
+  <div class="section-inner">
+    <h1>DeFi Yield Farming Guide</h1>
+    <p class="lead">Everything you need to know about earning yield in DeFi — explained clearly, without the hype.</p>
+  </div>
+</section>
+
+<section class="section-inner" style="padding-bottom: 2rem;">
+  <nav class="learn-toc">
+    <h2>In this guide</h2>
+    <ol>
+      <li><a href="#what-is-defi-yield-farming">What is DeFi Yield Farming?</a></li>
+      <li><a href="#what-is-tvl">What is TVL in DeFi?</a></li>
+      <li><a href="#impermanent-loss">What is Impermanent Loss?</a></li>
+      <li><a href="#pool-safety">How to Evaluate DeFi Pool Safety?</a></li>
+      <li><a href="#safest-yield">What Are the Safest DeFi Yield Opportunities?</a></li>
+      <li><a href="#risk-scoring">How Does DeFi Risk Scoring Work?</a></li>
+      <li><a href="#apy-vs-apr">What is APY vs APR?</a></li>
+      <li><a href="#liquid-staking">What Are Liquid Staking Derivatives?</a></li>
+      <li><a href="#avoid-scams">How to Avoid DeFi Scams?</a></li>
+      <li><a href="#yield-strategies">Common DeFi Yield Strategies</a></li>
+    </ol>
+  </nav>
+</section>
+
+<article id="what-is-defi-yield-farming">
+  <div class="section-inner">
+    <h2>What is DeFi Yield Farming?</h2>
+    <p>Yield farming (also called liquidity mining) is the practice of depositing crypto assets into DeFi protocols in exchange for interest or rewards. Instead of letting your tokens sit idle in a wallet, you put them to work — lending them to borrowers, providing liquidity to trading pools, or staking them to secure a network.</p>
+    <p>The returns come from trading fees, interest payments, or token incentives distributed by the protocol. Yields are expressed as APY (Annual Percentage Yield) and can range from 2% on stablecoin lending to 50%+ on volatile liquidity pools.</p>
+    <p>Unlike traditional finance, DeFi yield farming is permissionless — no KYC, no minimum deposit, no lock-up periods in most cases. But this freedom comes with risk: smart contract bugs, rug pulls, and impermanent loss are real threats that can wipe out your capital.</p>
+  </div>
+</article>
+
+<article id="what-is-tvl">
+  <div class="section-inner">
+    <h2>What is TVL in DeFi?</h2>
+    <p>TVL (Total Value Locked) is the total amount of crypto assets deposited in a DeFi protocol or liquidity pool. It is measured in USD and is one of the most important metrics for evaluating a protocol's health and trustworthiness.</p>
+    <p>A high TVL generally means more users trust the protocol with their funds. A pool with $500M TVL is typically safer than one with $500K — not because the code is better, but because more capital at risk means more eyes on the protocol and more economic security.</p>
+    <p>TVL is not static. It rises when users deposit funds and falls when they withdraw. Sharp TVL drops can signal trouble — a protocol losing confidence, a hack, or a yield that is no longer attractive. Monitoring TVL trends over time is essential for risk assessment.</p>
+  </div>
+</article>
+
+<article id="impermanent-loss">
+  <div class="section-inner">
+    <h2>What is Impermanent Loss?</h2>
+    <p>Impermanent loss (IL) is the temporary loss of funds that occurs when you provide liquidity to an automated market maker (AMM) and the price of your deposited tokens changes relative to each other. The larger the price divergence, the greater the loss.</p>
+    <p>It is called "impermanent" because the loss only becomes permanent if you withdraw your liquidity while the price ratio is different from when you deposited. If the prices return to their original ratio, the loss disappears — but in practice, this rarely happens.</p>
+    <p>IL is the hidden cost of liquidity provision. The trading fees you earn must exceed the impermanent loss for the position to be profitable. Stablecoin pairs (like USDC-USDT) have minimal IL because their prices stay close. Volatile pairs (like ETH-MEME) can have significant IL.</p>
+  </div>
+</article>
+
+<article id="pool-safety">
+  <div class="section-inner">
+    <h2>How to Evaluate DeFi Pool Safety?</h2>
+    <p>Evaluating a DeFi pool requires looking beyond the headline APY. A 100% yield on an unaudited protocol is not a good deal if the contract has a backdoor. Here are the key factors to check:</p>
+    <dl>
+      <dt>TVL and liquidity depth</dt>
+      <dd>Higher TVL means more capital at risk, which generally correlates with more scrutiny. Pools under $100K TVL should be approached with extreme caution.</dd>
+      <dt>Audit status</dt>
+      <dd>Has the protocol been audited by a reputable firm? Audits are not guarantees, but they reduce the risk of critical bugs.</dd>
+      <dt>Protocol age and track record</dt>
+      <dd>Newer protocols are riskier. A protocol that has been running for months without incidents is a better signal than one launched last week.</dd>
+      <dt>Token security</dt>
+      <dd>Is the token a honeypot (you can buy but not sell)? Does it have excessive transfer taxes? Tools like GoPlus scan for these patterns automatically.</dd>
+      <dt>APY sustainability</dt>
+      <dd>Is the yield coming from real revenue (trading fees, interest) or from token emissions that will eventually run out? Emission-based yields collapse when the rewards end.</dd>
+    </dl>
+  </div>
+</article>
+
+<article id="safest-yield">
+  <div class="section-inner">
+    <h2>What Are the Safest DeFi Yield Opportunities?</h2>
+    <p>The safest DeFi yields come from established protocols with audited contracts, high TVL, and revenue-based yields rather than token emissions. These typically offer lower APY (2–8%) but with significantly lower risk of principal loss.</p>
+    <p>Blue-chip lending protocols like Aave and Compound offer stable yields on major assets (USDC, USDT, ETH, WBTC). Liquid staking protocols like Lido and Rocket Pool offer ETH staking yields with liquid withdrawal tokens. Major DEXs like Uniswap and Curve offer trading fee revenue on stablecoin pairs.</p>
+    <p>These protocols have billions in TVL, multiple audits, and have been battle-tested through market crashes. They are not risk-free (smart contract risk always exists), but they represent the lowest end of the DeFi risk spectrum.</p>
+  </div>
+</article>
+
+<article id="risk-scoring">
+  <div class="section-inner">
+    <h2>How Does DeFi Risk Scoring Work?</h2>
+    <p>Risk scoring in DeFi involves analyzing multiple factors and combining them into a single composite score that represents the overall risk of a yield pool. The goal is to replace gut feelings with quantifiable metrics.</p>
+    <p>A typical multi-factor model considers: APY volatility (how stable is the yield), TVL quality (how deep is the liquidity and is it growing or shrinking), 7-day trend (is the pool improving or deteriorating), impermanent loss potential (based on token pair volatility), pool maturity (how long has the pool existed), and token security (are the tokens safe to hold and trade).</p>
+    <p>Each factor is weighted according to its predictive value. The composite score (usually 0–100) places each pool into a risk tier: safe (75–100), watch (50–74), speculative (25–49), or danger (0–24). This gives investors a quick signal without requiring them to analyze each factor individually.</p>
+    <p><a href="/docs" style="color: var(--color-primary); text-decoration: underline;">See YieldRadar's full scoring methodology →</a></p>
+  </div>
+</article>
+
+<article id="apy-vs-apr">
+  <div class="section-inner">
+    <h2>What is APY vs APR?</h2>
+    <p>APR (Annual Percentage Rate) is the simple annual return on your investment without compounding. If you deposit $1,000 at 10% APR, you earn $100 per year. APY (Annual Percentage Yield) includes the effect of compounding — earning returns on your returns.</p>
+    <p>With monthly compounding at 10% APR, your APY would be about 10.47%. The difference grows with higher rates and more frequent compounding. At 100% APR with daily compounding, the APY would be approximately 171%.</p>
+    <p>In DeFi, most protocols advertise APY because it looks higher. When comparing yields, always check whether the figure is APY or APR, and how often returns compound. Some protocols compound automatically, while others require manual reinvestment — which affects your actual returns.</p>
+  </div>
+</article>
+
+<article id="liquid-staking">
+  <div class="section-inner">
+    <h2>What Are Liquid Staking Derivatives?</h2>
+    <p>Liquid staking allows you to stake your crypto (typically ETH) to help secure a blockchain network while receiving a liquid token in return. This token (like stETH from Lido or rETH from Rocket Pool) represents your staked position plus accumulated rewards, and can be used in other DeFi protocols.</p>
+    <p>Traditional staking locks your assets — you cannot trade, lend, or use them elsewhere. Liquid staking derivatives solve this by giving you a tradeable receipt token. You earn the base staking yield (typically 3–5% for ETH) while potentially earning additional yield by lending or providing liquidity with the derivative token.</p>
+    <p>The main risks are smart contract risk (the staking protocol could be hacked), depegging risk (the derivative token could lose its 1:1 peg with the underlying asset), and slashing risk (validators could be penalized, reducing the value of your stake).</p>
+  </div>
+</article>
+
+<article id="avoid-scams">
+  <div class="section-inner">
+    <h2>How to Avoid DeFi Scams?</h2>
+    <p>DeFi scams are common and often sophisticated. The most important rule: if the yield looks too good to be true, it probably is. A protocol offering 500% APY on a token with no real use case is almost certainly a Ponzi scheme or rug pull.</p>
+    <p>Common red flags include: unaudited contracts with anonymous teams, tokens that are honeypots (you can buy but not sell), contracts with hidden mint functions that can inflate the token supply, and protocols that pressure you to deposit quickly before a "launch window" closes.</p>
+    <p>Protect yourself by: checking token security with tools like GoPlus or Token Sniffer, verifying audit reports from reputable firms, starting with small amounts, using established protocols with significant TVL, and never investing more than you can afford to lose. YieldRadar automates several of these checks — every token is scanned for honeypot patterns, malicious contracts, and high-tax mechanisms before appearing in alerts.</p>
+  </div>
+</article>
+
+<article id="yield-strategies">
+  <div class="section-inner">
+    <h2>Common DeFi Yield Strategies</h2>
+    <p>DeFi yield strategies range from conservative to aggressive. The right strategy depends on your risk tolerance, capital size, and time commitment.</p>
+    <dl>
+      <dt>Stablecoin lending</dt>
+      <dd>Deposit USDC or USDT into Aave, Compound, or similar lending protocols. Low risk, 2–8% APY. Good for capital preservation.</dd>
+      <dt>Blue-chip liquidity provision</dt>
+      <dd>Provide liquidity to established pairs (ETH-USDC, WBTC-ETH) on Uniswap or Curve. Moderate risk from impermanent loss, 5–20% APY from trading fees.</dd>
+      <dt>Liquid staking</dt>
+      <dd>Stake ETH via Lido or Rocket Pool, then use the receipt token in DeFi. Base yield of 3–5% plus additional yield from lending or LP strategies.</dd>
+      <dt>Leveraged yield farming</dt>
+      <dd>Borrow against your collateral to amplify your yield position. Higher returns but significantly higher risk — liquidation can wipe out your position.</dd>
+      <dt>Governance token farming</dt>
+      <dd>Provide liquidity to earn protocol governance tokens. High initial yields that typically decline as emissions decrease. Early participants benefit most.</dd>
+    </dl>
+  </div>
+</article>
+
+<section class="section-inner" style="padding: 3rem 0;">
+  <div style="background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center;">
+    <h2>Monitor these strategies automatically</h2>
+    <p style="margin: 1rem 0;">YieldRadar monitors 3,800+ pools across 6 chains and scores each one on risk — <a href="https://t.me/yieldradar_bot" style="color: var(--color-primary); text-decoration: underline;">start free on Telegram</a>.</p>
+    <a href="https://t.me/yieldradar_bot" class="cta-primary" target="_blank" rel="noopener">Open in Telegram →</a>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+  .learn-toc {
+    background: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+  }
+  .learn-toc h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.1rem;
+  }
+  .learn-toc ol {
+    margin: 0;
+    padding-left: 1.2rem;
+    columns: 2;
+    column-gap: 2rem;
+  }
+  .learn-toc li {
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    break-inside: avoid;
+  }
+  .learn-toc a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  .learn-toc a:hover {
+    text-decoration: underline;
+  }
+  article {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  article:last-of-type {
+    border-bottom: none;
+  }
+  article h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  article p {
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+    color: var(--color-text-secondary, var(--color-text));
+  }
+  article dl {
+    margin: 1rem 0;
+  }
+  article dt {
+    font-weight: 600;
+    margin-top: 1rem;
+    color: var(--color-text);
+  }
+  article dd {
+    margin: 0.3rem 0 0.5rem 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary, var(--color-text));
+  }
+  @media (max-width: 640px) {
+    .learn-toc ol {
+      columns: 1;
+    }
+  }
+</style>
