@@ -28,7 +28,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       "name": "What chains are supported?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We currently monitor pools on Ethereum, Base, Solana, Arbitrum, BSC, and Polygon — covering over 75% of all DeFi TVL. More chains are planned for future updates."
+        "text": "We currently monitor pools on 10 chains — Ethereum, Base, Solana, Arbitrum, BSC, Polygon, Optimism, Avalanche, Hyperliquid L1, and Sui — covering over 85% of all DeFi TVL."
       }
     },
     {
@@ -36,7 +36,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       "name": "How does the risk scoring work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every pool is scored 0–100 based on six factors: APY volatility, TVL quality, 7-day trend, impermanent loss risk, pool maturity, and GoPlus token security analysis. Each factor has a specific weight in the composite score."
+        "text": "Every pool is scored 0–100 based on ten weighted factors: APY volatility, TVL quality, 7-day trend, impermanent loss risk, pool maturity, GoPlus token security, address security, rugpull detection, protocol tier, and emission decay. Each factor has a specific weight in the composite score."
       }
     },
     {
@@ -84,7 +84,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       "name": "What are the alert buttons?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Every alert has three inline buttons: Details (opens a deep-dive analysis with yield breakdown, risk factors, and similar pools), Invest (links directly to the pool on DeFiLlama), and Mute (silences alerts for that pool)."
+        "text": "Every alert has three inline buttons: Details (opens a deep-dive analysis with yield breakdown, risk factors, and similar pools), Invest (links to the protocol page on DeFiLlama), and Mute (silences alerts for that pool)."
       }
     },
     {
@@ -92,7 +92,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       "name": "How do I invest in a pool?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tap the Invest button on any alert — it links directly to the pool on DeFiLlama where you can connect your wallet and deposit. No funds ever pass through YieldRadar. We only provide information."
+        "text": "Tap the Invest button on any alert — it opens the protocol page on DeFiLlama where you can connect your wallet and deposit. No funds ever pass through YieldRadar. We only provide information."
       }
     }
   ]
@@ -133,7 +133,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <span class="stat-label">Pass our quality filters</span>
       </div>
       <div class="stat">
-        <span class="stat-number">6</span>
+        <span class="stat-number">10</span>
         <span class="stat-label">Chains monitored</span>
       </div>
       <div class="stat">
@@ -198,7 +198,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <span class="alt-feature">Risk scoring</span>
         <span>None</span>
         <span>Opinions only</span>
-        <span class="alt-us">6-factor model</span>
+        <span class="alt-us">10-factor model</span>
       </div>
       <div class="alt-row">
         <span class="alt-feature">Security checks</span>
@@ -238,7 +238,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   <div class="section-inner">
     <h2>Risk scoring that actually works</h2>
     <p class="lead">
-      High APY means nothing if the protocol rugs next week. We score every pool on six factors, not just yield.
+      High APY means nothing if the protocol rugs next week. We score every pool on ten weighted factors, not just yield.
       <a href="/docs" style="color: var(--color-primary); text-decoration: underline; font-size: 0.9rem;">See the full methodology →</a>
     </p>
     <dl class="tiers">
@@ -292,7 +292,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
               <span class="tg-value positive">↑ 0.3%</span>
             </div>
           </div>
-          <div class="tg-meta">Ethereum · Lending</div>
+          <div class="tg-meta">Ethereum</div>
           <div class="tg-buttons">
             <span class="tg-btn">📊 Details</span>
             <span class="tg-btn">🔗 Invest</span>
@@ -325,7 +325,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
               <span class="tg-value positive">↑ 2.5%</span>
             </div>
           </div>
-          <div class="tg-meta">Base · LP / Yield Farming</div>
+          <div class="tg-meta">Base</div>
           <div class="tg-buttons">
             <span class="tg-btn">📊 Details</span>
             <span class="tg-btn">🔗 Invest</span>
@@ -358,7 +358,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
               <span class="tg-value negative">↑ volatile</span>
             </div>
           </div>
-          <div class="tg-meta">Solana · LP — Low TVL, extreme APY, memecoin pair</div>
+          <div class="tg-meta">Solana</div>
           <div class="tg-buttons">
             <span class="tg-btn">📊 Details</span>
             <span class="tg-btn">🔗 Invest</span>
@@ -400,7 +400,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 <section class="chains" id="chains">
   <div class="section-inner">
     <h2>Chain coverage</h2>
-    <p class="lead">Monitoring pools across 6 chains — covering over 75% of all DeFi TVL.</p>
+    <p class="lead">Monitoring pools across 10 chains — covering over 85% of all DeFi TVL.</p>
     <div class="chain-grid">
       <div class="chain-badge"><span class="chain-dot" style="background:#627EEA"></span>Ethereum</div>
       <div class="chain-badge"><span class="chain-dot" style="background:#0052FF"></span>Base</div>
@@ -408,6 +408,10 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       <div class="chain-badge"><span class="chain-dot" style="background:#28A0F0"></span>Arbitrum</div>
       <div class="chain-badge"><span class="chain-dot" style="background:#F0B90B"></span>BSC</div>
       <div class="chain-badge"><span class="chain-dot" style="background:#8247E5"></span>Polygon</div>
+      <div class="chain-badge"><span class="chain-dot" style="background:#FF0420"></span>Optimism</div>
+      <div class="chain-badge"><span class="chain-dot" style="background:#E84142"></span>Avalanche</div>
+      <div class="chain-badge"><span class="chain-dot" style="background:#00D395"></span>Hyperliquid</div>
+      <div class="chain-badge"><span class="chain-dot" style="background:#6FBCF0"></span>Sui</div>
     </div>
   </div>
 </section>
@@ -422,16 +426,16 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <dd class="stat-label">Yield pools monitored (filtered from 18,632)</dd>
       </div>
       <div class="stat">
-        <dt class="stat-number">6</dt>
-        <dd class="stat-label">Chains covered — Ethereum, Base, Solana, Arbitrum, BSC, Polygon</dd>
+        <dt class="stat-number">10</dt>
+        <dd class="stat-label">Chains covered — Ethereum, Base, Solana, Arbitrum, BSC, Polygon, Optimism, Avalanche, Hyperliquid, Sui</dd>
       </div>
       <div class="stat">
-        <dt class="stat-number">75%+</dt>
+        <dt class="stat-number">85%+</dt>
         <dd class="stat-label">Of all DeFi TVL covered by monitored chains</dd>
       </div>
       <div class="stat">
-        <dt class="stat-number">6</dt>
-        <dd class="stat-label">Risk factors per pool — APY/volatility, TVL, trend, IL, maturity, security</dd>
+        <dt class="stat-number">10</dt>
+        <dd class="stat-label">Risk factors per pool — APY/volatility, TVL, trend, IL, maturity, security (token, address, rugpull), protocol tier, emission decay</dd>
       </div>
       <div class="stat">
         <dt class="stat-number">4</dt>
@@ -443,10 +447,10 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       </div>
       <div class="stat">
         <dt class="stat-number">GoPlus</dt>
-        <dd class="stat-label">Security API integration for token safety checks</dd>
+        <dd class="stat-label">Security API — token, address, rugpull, approval, and phishing checks</dd>
       </div>
       <div class="stat">
-        <dt class="stat-number">504</dt>
+        <dt class="stat-number">740</dt>
         <dd class="stat-label">Test cases in the Vitest suite</dd>
       </div>
     </dl>
@@ -464,7 +468,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           <li>10 alerts per day</li>
           <li>Basic chain and risk filters</li>
           <li>Daily digest</li>
-          <li>All 6 chains</li>
+          <li>All 10 chains</li>
         </ul>
         <a href="https://t.me/yieldradar_bot" class="cta-secondary" target="_blank" rel="noopener">Get started →</a>
       </div>
@@ -564,22 +568,28 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         </ul>
       </div>
       <div class="roadmap-column">
-        <h3>🔄 Next up (v1.2 — Q2 2026)</h3>
+        <h3>✅ Shipped (v1.2 — April 2026)</h3>
         <ul>
-          <li>More chains coming soon</li>
+          <li>4 new chains — Optimism, Avalanche, Hyperliquid L1, Sui</li>
           <li>Launch pricing — $9.99/mo (locks in forever)</li>
-          <li>Scoring track record &amp; backtesting dashboard</li>
-          <li>Alert quality improvements based on user feedback</li>
+          <li>Alert deduplication with persistent tracking</li>
+          <li>Minimum APY filter</li>
+          <li>Data export (CSV / JSON)</li>
+          <li>GoPlus expanded — 5 security endpoints (token, address, rugpull, approval, phishing)</li>
+          <li>Emission decay detection</li>
+          <li>Simplified onboarding (5→3 steps)</li>
+          <li>Pipeline fetch hang fix</li>
         </ul>
       </div>
       <div class="roadmap-column">
         <h3>🔮 Planned (v2.0 — H2 2026)</h3>
         <ul>
+          <li>Scoring track record &amp; backtesting dashboard</li>
           <li>Yield collapse prediction (LSTM anomaly detection)</li>
           <li>Social sentiment signals (crypto Twitter / Reddit)</li>
           <li>REST API access (Power tier)</li>
-          <li>Data export (CSV / JSON)</li>
           <li>Protocol exploit tracking (REKT database)</li>
+          <li>Governance token</li>
         </ul>
       </div>
       <div class="roadmap-column">
@@ -613,11 +623,11 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       </details>
       <details class="faq-item">
         <summary>What chains are supported?</summary>
-        <p>We currently monitor pools on Ethereum, Base, Solana, Arbitrum, BSC, and Polygon — covering over 75% of all DeFi TVL. More chains are planned for future updates.</p>
+        <p>We currently monitor pools on 10 chains — Ethereum, Base, Solana, Arbitrum, BSC, Polygon, Optimism, Avalanche, Hyperliquid L1, and Sui — covering over 85% of all DeFi TVL.</p>
       </details>
       <details class="faq-item">
         <summary>How does the risk scoring work?</summary>
-        <p>Every pool is scored 0–100 based on six factors: APY volatility, TVL quality, 7-day trend, impermanent loss risk, pool maturity, and GoPlus token security analysis. Each factor has a specific weight in the composite score. <a href="/docs">See the full methodology →</a></p>
+        <p>Every pool is scored 0–100 based on ten weighted factors: APY volatility, TVL quality, 7-day trend, impermanent loss risk, pool maturity, GoPlus token security, address security, rugpull detection, protocol tier, and emission decay. Each factor has a specific weight in the composite score. <a href="/docs">See the full methodology →</a></p>
       </details>
       <details class="faq-item">
         <summary>How do I pay for Pro?</summary>
@@ -641,11 +651,11 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       </details>
       <details class="faq-item">
         <summary>What are the alert buttons?</summary>
-        <p>Every alert has three inline buttons: <strong>Details</strong> (opens a deep-dive analysis with yield breakdown, risk factors, and similar pools), <strong>Invest</strong> (links directly to the pool on DeFiLlama), and <strong>Mute</strong> (silences alerts for that pool).</p>
+        <p>Every alert has three inline buttons: <strong>Details</strong> (opens a deep-dive analysis with yield breakdown, risk factors, and similar pools), <strong>Invest</strong> (links to the protocol page on DeFiLlama), and <strong>Mute</strong> (silences alerts for that pool).</p>
       </details>
       <details class="faq-item">
         <summary>How do I invest in a pool?</summary>
-        <p>Tap the <strong>Invest</strong> button on any alert — it links directly to the pool on DeFiLlama where you can connect your wallet and deposit. No funds ever pass through YieldRadar. We only provide information.</p>
+        <p>Tap the <strong>Invest</strong> button on any alert — it opens the protocol page on DeFiLlama where you can connect your wallet and deposit. No funds ever pass through YieldRadar. We only provide information.</p>
       </details>
     </div>
   </div>
