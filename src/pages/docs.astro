@@ -29,7 +29,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     <dt>Database</dt>
     <dd>SQLite (better-sqlite3, WAL mode)</dd>
     <dt>Testing</dt>
-    <dd>Vitest (740 tests)</dd>
+    <dd>Vitest (755 tests)</dd>
     <dt>Deployment</dt>
     <dd>Docker, multi-stage build</dd>
   </dl>
@@ -145,8 +145,8 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     <p><code>finalScore = riskAdjustedScore × securityMultiplier × protocolTierMultiplier × addressSecurityMultiplier × rugpullMultiplier × protocolRiskMultiplier × emissionMultiplier</code></p>
     <p class="formula-note">six additional GoPlus, protocol, and emission factors — each as a weighted multiplier (0.0–1.0)</p>
 
-    <p><code>normalizedScore = scale(finalScore, 0, 100)</code></p>
-    <p class="formula-note">linear scaling to the 0–100 range for consistent tier classification</p>
+    <p><code>normalizedScore = logPercentile(riskAdjustedScore, batchP5, batchP95)</code></p>
+    <p class="formula-note">log-percentile normalization — transforms scores through log-space and maps P5→0, P95→100 to handle power-law yield distributions</p>
   </div>
 
   <h3>Worked example</h3>
