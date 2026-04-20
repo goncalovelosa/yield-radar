@@ -2,9 +2,10 @@
 export interface Props {
   title: string;
   description?: string;
+  noindex?: boolean;
 }
 
-const { title, description = "Real-time DeFi yield intelligence with multi-factor risk scoring" } = Astro.props;
+const { title, description = "Real-time DeFi yield intelligence with multi-factor risk scoring", noindex = false } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,6 +24,7 @@ const { title, description = "Real-time DeFi yield intelligence with multi-facto
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://yieldradar.io/og-image.svg" />
     <link rel="canonical" href={Astro.url.href} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
