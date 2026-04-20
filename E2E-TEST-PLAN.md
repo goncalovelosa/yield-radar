@@ -1,9 +1,9 @@
 # YieldRadar Landing Page — E2E Test Plan
 
-**Version:** 1.0  
-**Last Updated:** 2026-04-20  
+**Version:** 1.1  
+**Last Updated:** 2026-04-20 (session 2)  
 **Scope:** https://yieldradar.io (all pages)  
-**Environment:** Production (Hetzner) + Local dev (`npm run dev`)
+**Environment:** Production (Hetzner) + Local dev (`npm run dev`) + Tailscale for remote access
 
 ---
 
@@ -39,7 +39,8 @@ npx playwright install
 | 1.2 | Build output is complete | `ls dist/` and check pages | `index.html`, `docs/index.html`, `learn/index.html`, `changelog/index.html`, `sitemap-index.xml` exist |
 | 1.3 | No build errors or orphan assets | Review build output | Zero "orphan" or "missing" asset warnings |
 | 1.4 | Static files are self-contained | Check dist/ has no server-side dependencies | All HTML/CSS/JS inline or referenced from dist/ |
-| 1.5 | Production site is accessible | `curl -sI https://yieldradar.io` | HTTP 200, proper content-type |
+| 1.5 | **Logo assets exist** | Check `public/` | `logo.svg` (nav logo), `favicon.svg`, `favicon.ico` (16/32/64px) all present |
+| 1.6 | Production site is accessible | `curl -sI https://yieldradar.io` | HTTP 200, proper content-type |
 
 ---
 
@@ -85,16 +86,22 @@ npx playwright install
 
 ---
 
-## 5. Responsive Design
+## 5. Responsive Design & Layout
 
 | # | Test Case | Steps | Expected Result |
 |---|-----------|-------|-----------------|
 | 5.1 | Mobile (< 640px) | DevTools → iPhone SE viewport | Single column, nav collapses to hamburger, text readable, no horizontal scroll |
-| 5.2 | Tablet (768px - 1024px) | DevTools → iPad viewport | 2-column pricing, proper spacing, no overflow |
+| 5.2 | Tablet (768px - 1024px) | DevTools → iPad viewport | 2-column pricing, 2-col stats grid, proper spacing, no overflow |
 | 5.3 | Desktop (1280px+) | Full-width browser | Full layout, all sections visible, proper whitespace |
 | 5.4 | Large desktop (1920px+) | Full-width on large monitor | Content doesn't stretch too wide, max-width container respected |
 | 5.5 | Touch targets (mobile) | Check all buttons/links on mobile | Minimum 44x44px tap targets |
 | 5.6 | Font scaling | Set browser zoom to 200% | Layout doesn't break, text still readable |
+| 5.7 | **Stats grid layout** | View "By the numbers" section | 4 cards top row + 4 cards bottom row, evenly aligned |
+| 5.8 | **Stats grid — mobile** | Resize to <768px | Stats grid collapses to 2 columns |
+| 5.9 | **Pipeline boxes equal height** | View "How it works" section | All 4 pipeline boxes are same height (tallest wins), arrows vertically centered |
+| 5.10 | **Pipeline — mobile vertical** | Resize to <768px | Pipeline stacks vertically, arrows hidden |
+| 5.11 | **FAQ full-width left-aligned** | View FAQ section | FAQ items span full content width, left-aligned (no centering) |
+| 5.12 | **Docs architecture pipeline** | Navigate to /docs → Architecture | All 5 steps in single horizontal row, no wrapping |
 
 ---
 
@@ -103,13 +110,15 @@ npx playwright install
 | # | Test Case | Steps | Expected Result |
 |---|-----------|-------|-----------------|
 | 6.1 | Pricing tiers match bot | Compare site Free/Pro/Power tiers with bot subscription logic | Features, prices, limits are consistent |
-| 6.2 | Supported chains listed correctly | Check chain list against DeFiLlama data | All 6 chains (Ethereum, BSC, Arbitrum, Polygon, Avalanche, Optimism) listed |
+| 6.2 | Supported chains listed correctly | Check chain list against DeFiLlama data | All 10 chains listed: Ethereum, Base, Solana, Arbitrum, BSC, Polygon, Optimism, Avalanche, Hyperliquid L1, Sui |
 | 6.3 | FAQ answers are accurate | Read each FAQ item | Answers reflect actual bot behavior (verify against source code) |
 | 6.4 | No placeholder/stale text | Search for "TODO", "placeholder", "coming soon" outside blog | No stale placeholder text on live pages |
 | 6.5 | Changelog is current | Check changelog entries | Matches actual released features, latest version is v1.2 |
 | 6.6 | Docs page formulas correct | Check risk scoring formula against bot source code | Formula in docs matches `risk-scoring/scorer/` implementation |
 | 6.7 | Blog placeholder handled | Navigate to /blog | Shows "Coming soon" or similar, no 404 |
 | 6.8 | Telegram bot link correct | Click "Open in Telegram" | Opens `https://t.me/YieldRadar_io_bot` |
+| 6.9 | **Nav logo renders** | View top-left of any page | Radar + yield arrow SVG logo visible, links to / |
+| 6.10 | **Favicon loads** | Check browser tab icon | Radar logo favicon visible (not default Astro icon) |
 
 ---
 
@@ -126,6 +135,10 @@ npx playwright install
 | 7.7 | Skip to content link | Tab once on page load | Skip link appears and jumps to main content |
 | 7.8 | Form elements labeled | If any forms exist (newsletter, etc.) | All inputs have associated labels |
 | 7.9 | Focus indicators visible | Tab to buttons/links | Visible focus ring/outline on all interactive elements |
+| 7.10 | **Decorative SVGs hidden** | Inspect all `<svg>` elements in index.astro | All 12 decorative SVGs have `aria-hidden="true"` (4 pipeline + 4 security + 4 moat icons) |
+| 7.11 | **Nav logo accessible** | Inspect nav logo `<a>` tag | Has `aria-label="YieldRadar home"` |
+| 7.12 | **Methodology links labeled** | Check all 3 "See the full methodology →" links | Each has `aria-label="Read the full risk scoring methodology"` |
+| 7.13 | **No empty anchors/headings** | Run Lighthouse a11y audit on / | Zero "Headings and anchors must have accessible name" violations |
 
 ---
 
@@ -201,11 +214,21 @@ Phase 5 — Cross-Browser (15 min)
 
 These were identified in `docs/critiques/` — verify if resolved:
 
-- [ ] Pricing section clarity (cross-persona issue)
+- [x] ~~Pricing section clarity~~ — restructured with Free/Pro cards
 - [ ] Hero section value proposition clarity
 - [ ] Mobile navigation UX
-- [ ] FAQ coverage completeness
+- [x] ~~FAQ coverage completeness~~ — 11 FAQ items covering all major topics
 - [ ] Social proof / trust signals
+
+## Changes Since v1.0 (Session 2)
+
+- **Logo:** Replaced generic crosshair SVG with custom radar + yield arrow logo (`public/logo.svg`)
+- **Favicon:** Updated `favicon.svg` and `favicon.ico` (16/32/64px) to match new logo
+- **A11y:** Added `aria-hidden="true"` to 12 decorative SVGs, `aria-label` to nav logo and 3 methodology links
+- **Stats grid:** Changed from `auto-fit` (5+3 layout) to fixed `repeat(4, 1fr)` (4+4 layout), 2-col on mobile
+- **Pipeline boxes:** Equal height via `align-items: stretch`, arrows vertically centered
+- **FAQ alignment:** Removed max-width, now full-width left-aligned
+- **Docs pipeline:** Scoped override forces single-row horizontal layout on /docs Architecture section
 
 ---
 
