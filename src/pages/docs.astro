@@ -347,6 +347,25 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     margin-top: 1.5rem;
   }
 
+  /* Architecture pipeline — single row */
+  .docs-section .pipeline {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.5rem;
+    justify-content: flex-start;
+  }
+  .docs-section .pipeline-step {
+    flex: 0 1 auto;
+    min-width: 150px;
+    max-width: 200px;
+  }
+  .docs-section .pipeline-arrow {
+    flex: 0 0 auto;
+    padding-top: 2rem;
+    align-self: center;
+  }
+
   .docs-formula {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
