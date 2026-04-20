@@ -29,7 +29,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     <dt>Database</dt>
     <dd>SQLite (better-sqlite3, WAL mode)</dd>
     <dt>Testing</dt>
-    <dd>Vitest (504 tests)</dd>
+    <dd>Vitest (740 tests)</dd>
     <dt>Deployment</dt>
     <dd>Docker, multi-stage build</dd>
   </dl>
@@ -67,7 +67,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6m8 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6m0 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14"/></svg>
       </div>
       <h3>Score</h3>
-      <p>6-factor risk model (0–100)</p>
+      <p>10-factor risk model (0–100)</p>
     </div>
     <div class="pipeline-arrow">→</div>
     <div class="pipeline-step">
@@ -78,7 +78,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       <p>Matched to user preferences → Telegram</p>
     </div>
   </div>
-  <p class="docs-note">Data flows in one direction. The bot polls DeFiLlama every 5 minutes, filters down to ~3,800 eligible pools, scores each one on six risk factors, and pushes matches to subscribed users.</p>
+  <p class="docs-note">Data flows in one direction. The bot polls DeFiLlama every 5 minutes, filters down to ~3,800 eligible pools, scores each one on ten risk factors, and pushes matches to subscribed users.</p>
 </section>
 
 <section class="section-inner docs-section">
@@ -117,7 +117,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       <span class="docs-step-num">4</span>
       <div>
         <h3>Scoring</h3>
-        <p>Each eligible pool receives a <strong>6-factor composite score</strong> (0–100). See the risk scoring model below for the formula.</p>
+        <p>Each eligible pool receives a <strong>10-factor composite score</strong> (0–100). See the risk scoring model below for the formula.</p>
       </div>
     </div>
     <div class="docs-step">
@@ -132,17 +132,20 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 <section class="section-inner docs-section">
   <h2>Risk scoring model</h2>
-  <p>Each pool receives a composite score based on six weighted factors. The score is normalized to a 0–100 scale where higher is safer.</p>
+  <p>Each pool receives a composite score based on ten weighted factors. The score is normalized to a 0–100 scale where higher is safer.</p>
 
   <h3>The formula</h3>
   <div class="docs-formula">
     <p><code>rawScore = APY / max(sigma, 0.01)</code></p>
     <p class="formula-note">where <strong>sigma</strong> is the standard deviation of APY over available snapshots — measures yield stability</p>
 
-    <p><code>riskAdjustedScore = rawScore × TVL_multiplier × trend_multiplier × IL_multiplier × maturity_multiplier × security_multiplier</code></p>
-    <p class="formula-note">each multiplier adjusts the raw score up or down based on pool-specific risk factors</p>
+    <p><code>riskAdjustedScore = rawScore × TVL_multiplier × trend_multiplier × IL_multiplier × maturity_multiplier</code></p>
+    <p class="formula-note">four core multipliers adjust the raw score up or down based on pool-specific risk factors</p>
 
-    <p><code>normalizedScore = scale(riskAdjustedScore, 0, 100)</code></p>
+    <p><code>finalScore = riskAdjustedScore × securityMultiplier × protocolTierMultiplier × addressSecurityMultiplier × rugpullMultiplier × protocolRiskMultiplier × emissionMultiplier</code></p>
+    <p class="formula-note">six additional GoPlus, protocol, and emission factors — each as a weighted multiplier (0.0–1.0)</p>
+
+    <p><code>normalizedScore = scale(finalScore, 0, 100)</code></p>
     <p class="formula-note">linear scaling to the 0–100 range for consistent tier classification</p>
   </div>
 
@@ -216,13 +219,31 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           <td>Token security</td>
           <td>0.0–1.0 multiplier</td>
           <td>GoPlus API</td>
-          <td>Honeypot detection, malicious contract scan, token tax analysis</td>
+          <td>Honeypot detection, malicious contract scan, token tax analysis (15 conditions)</td>
         </tr>
         <tr>
-          <td>Protocol metadata</td>
+          <td>Address security</td>
+          <td>0.0–1.0 multiplier</td>
+          <td>GoPlus API</td>
+          <td>Malicious address flags — sanctions, phishing, blacklist, honeypot creator</td>
+        </tr>
+        <tr>
+          <td>Rugpull detection</td>
+          <td>0.0–1.0 multiplier</td>
+          <td>GoPlus API</td>
+          <td>Rugpull risk scoring based on contract patterns and holder distribution</td>
+        </tr>
+        <tr>
+          <td>Protocol tier</td>
           <td>Tier classification</td>
           <td>DeFiLlama protocols</td>
-          <td>Audit status, protocol age, and category factor into risk</td>
+          <td>Audit status, protocol age, and category factor into risk via tier multiplier</td>
+        </tr>
+        <tr>
+          <td>Emission decay</td>
+          <td>0.0–1.0 multiplier</td>
+          <td>Internal (APY history)</td>
+          <td>Detects emission-based yields and penalizes decaying reward structures</td>
         </tr>
       </tbody>
     </table>
@@ -259,7 +280,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
     <dt>DeFiLlama</dt>
     <dd>Primary data source — pool data, APY, TVL, 7d APY change, protocol metadata, audit status, and chain information. Polled every 5 minutes.</dd>
     <dt>GoPlus Security</dt>
-    <dd>Token-level security analysis — honeypot detection, malicious contract scanning, transfer tax analysis, and token safety scoring. Integrated as a weighted factor in the composite risk score, not just a pass/fail check.</dd>
+    <dd>Multi-endpoint security analysis — token security (honeypot, malicious contracts, transfer tax), address security (sanctions, phishing), rugpull detection, approval security, and phishing site detection. Each endpoint contributes a weighted multiplier to the composite risk score.</dd>
   </dl>
 </section>
 

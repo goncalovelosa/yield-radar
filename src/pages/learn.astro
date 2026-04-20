@@ -96,7 +96,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   <div class="section-inner">
     <h2>How Does DeFi Risk Scoring Work?</h2>
     <p>Risk scoring in DeFi involves analyzing multiple factors and combining them into a single composite score that represents the overall risk of a yield pool. The goal is to replace gut feelings with quantifiable metrics.</p>
-    <p>A typical multi-factor model considers: APY volatility (how stable is the yield), TVL quality (how deep is the liquidity and is it growing or shrinking), 7-day trend (is the pool improving or deteriorating), impermanent loss potential (based on token pair volatility), pool maturity (how long has the pool existed), and token security (are the tokens safe to hold and trade).</p>
+    <p>A comprehensive multi-factor model considers: APY volatility (how stable is the yield), TVL quality (how deep is the liquidity), 7-day trend (improving or deteriorating), impermanent loss potential, pool maturity, token security (GoPlus honeypot and malicious contract detection), address security (sanctions and phishing flags), rugpull detection, protocol tier (audit status and protocol age), and emission decay (detecting unsustainable reward structures).</p>
     <p>Each factor is weighted according to its predictive value. The composite score (usually 0–100) places each pool into a risk tier: safe (75–100), watch (50–74), speculative (25–49), or danger (0–24). This gives investors a quick signal without requiring them to analyze each factor individually.</p>
     <p><a href="/docs" style="color: var(--color-primary); text-decoration: underline;">See YieldRadar's full scoring methodology →</a></p>
   </div>
@@ -151,7 +151,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 <section class="section-inner" style="padding: 3rem 0;">
   <div style="background: var(--color-card); border: 1px solid var(--color-border); border-radius: 12px; padding: 2rem; text-align: center;">
     <h2>Monitor these strategies automatically</h2>
-    <p style="margin: 1rem 0;">YieldRadar monitors 3,800+ pools across 6 chains and scores each one on risk — <a href="https://t.me/yieldradar_bot" style="color: var(--color-primary); text-decoration: underline;">start free on Telegram</a>.</p>
+    <p style="margin: 1rem 0;">YieldRadar monitors 3,800+ pools across 10 chains and scores each one on risk — <a href="https://t.me/yieldradar_bot" style="color: var(--color-primary); text-decoration: underline;">start free on Telegram</a>.</p>
     <a href="https://t.me/yieldradar_bot" class="cta-primary" target="_blank" rel="noopener">Open in Telegram →</a>
   </div>
 </section>
