@@ -255,7 +255,7 @@ img {
 /* --- Stats Grid --- */
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   margin-top: 2.5rem;
 }
@@ -285,7 +285,7 @@ img {
 /* --- Pipeline --- */
 .pipeline {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   justify-content: center;
   gap: 1rem;
   margin-top: 2.5rem;
@@ -319,7 +319,7 @@ img {
   font-family: var(--font-heading);
   font-size: 1.5rem;
   color: var(--color-text-muted);
-  padding-top: 2rem;
+  align-self: center;
 }
 
 /* --- Risk Tiers --- */
@@ -765,6 +765,9 @@ img {
   .pipeline-arrow { display: none; }
   .pipeline { flex-direction: column; align-items: center; }
   .pipeline-step { max-width: 100%; }
+
+  /* Stats grid 2-col on mobile */
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
 
   /* Comparison table horizontal scroll */
   .alt-grid { overflow-x: auto; -webkit-overflow-scrolling: touch; }
