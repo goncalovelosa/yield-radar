@@ -78,19 +78,19 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       <p>Matched to user preferences → Telegram</p>
     </div>
   </div>
-  <p class="docs-note">Data flows in one direction. The bot polls DeFiLlama every 5 minutes, filters down to ~3,800 eligible pools, scores each one on ten risk factors, and pushes matches to subscribed users.</p>
+  <p class="docs-note">Data flows in one direction. The bot polls DeFiLlama every 5 minutes, filters down to ~2,000 eligible pools, scores each one on ten risk factors, and pushes matches to subscribed users.</p>
 </section>
 
 <section class="section-inner docs-section">
   <h2>Data pipeline — filtering in detail</h2>
-  <p>The raw DeFiLlama dataset contains ~18,632 pools. Not all of them are worth analyzing. Here's the filtering pipeline:</p>
+  <p>The raw DeFiLlama dataset contains ~15,000 pools across all supported chains. Not all of them are worth analyzing. Here's the filtering pipeline:</p>
 
   <div class="docs-steps">
     <div class="docs-step">
       <span class="docs-step-num">1</span>
       <div>
         <h3>Raw data</h3>
-        <p><strong>18,632 pools</strong> fetched from DeFiLlama every 5 minutes — APY, TVL, 7d APY change, chain, protocol, and token addresses across all supported chains.</p>
+        <p><strong>~15,000 pools</strong> fetched from DeFiLlama every 5 minutes — APY, TVL, 7d APY change, chain, protocol, and token addresses across all supported chains.</p>
       </div>
     </div>
     <div class="docs-step">
@@ -110,7 +110,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
       <span class="docs-step-num">3</span>
       <div>
         <h3>After filtering</h3>
-        <p><strong>~3,800 eligible pools</strong> remain — roughly 20% of the raw dataset. These are the pools that enter the risk scoring engine.</p>
+        <p><strong>~2,000 eligible pools</strong> remain — roughly 13% of the raw dataset. These are the pools that enter the risk scoring engine.</p>
       </div>
     </div>
     <div class="docs-step">
