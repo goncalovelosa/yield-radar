@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build & Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Check for broken links
+        run: |
+          npx linkinator ./dist --recurse \
+            --skip "^(https://yieldradar\.io|http://localhost)" \
+            --format json > link-results.json || true
+          node -e "
+            const results = require('./link-results.json');
+            const broken = results.links.filter(l => l.state === 'BROKEN');
+            if (broken.length > 0) {
+              console.error('❌ BROKEN LINKS (' + broken.length + '):');
+              broken.forEach(l => console.error('  ' + l.url + ' [' + l.status + '] from ' + l.parent));
+              process.exit(1);
+            }
+            const ok = results.links.filter(l => l.state === 'OK');
+            console.log('✅ All ' + ok.length + ' external links OK');
+          "
+
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+      - run: npm run build
+
+      - name: Start preview server
+        run: npx serve ./dist -l 3000 &
+          npx wait-on http://localhost:3000 --timeout 30000
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          urls: |
+            http://localhost:3000/
+            http://localhost:3000/docs
+            http://localhost:3000/changelog
+            http://localhost:3000/faq
+          budgetPath: ./lighthouse-budget.json
+          uploadArtifacts: true
