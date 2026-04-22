@@ -134,10 +134,10 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   <h2>Risk scoring model</h2>
   <p>Each pool receives a composite score based on ten weighted factors. The score is normalized to a 0–100 scale where higher is safer.</p>
 
-  <h3>The formula</h3>
-  <div class="docs-formula">
+      <h3>The formula</h3>
+      <div class="docs-formula">
     <p><code>rawScore = APY / max(sigma, 0.01)</code></p>
-    <p class="formula-note">where <strong>sigma</strong> is the standard deviation of APY over available snapshots — measures yield stability</p>
+    <p class="formula-note">where <strong>APY</strong> is the Annual Percentage Yield (including compounding) and <strong>sigma</strong> is the standard deviation of APY over available snapshots — measures yield stability. <a href="/learn#apy-vs-apr" style="color: var(--color-primary); font-size: 0.85rem;">Learn more about APY →</a></p>
 
     <p><code>riskAdjustedScore = rawScore × TVL_multiplier × trend_multiplier × IL_multiplier × maturity_multiplier</code></p>
     <p class="formula-note">four core multipliers adjust the raw score up or down based on pool-specific risk factors</p>
@@ -192,7 +192,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           <td>Yield adjusted for stability — high APY with high volatility scores lower</td>
         </tr>
         <tr>
-          <td>TVL quality</td>
+          <td><a href="/learn#what-is-tvl" style="color: var(--color-primary);">TVL</a> quality</td>
           <td>Multiplier</td>
           <td>DeFiLlama</td>
           <td>Deeper liquidity = more scrutiny, harder to manipulate</td>
@@ -204,7 +204,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
           <td>Rising or stable APY is positive; sharp drops are penalized</td>
         </tr>
         <tr>
-          <td>Impermanent loss</td>
+          <td><a href="/learn#impermanent-loss" style="color: var(--color-primary);">Impermanent loss</a></td>
           <td>0.5x penalty</td>
           <td>DeFiLlama</td>
           <td>LP pairs with volatile tokens face IL risk</td>
