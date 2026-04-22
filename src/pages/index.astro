@@ -682,4 +682,37 @@ import BaseLayout from '../layouts/BaseLayout.astro'
   </div>
 </section>
 
+<section class="glossary" id="glossary" style="padding: 2.5rem 0;">
+  <div class="section-inner">
+    <h2>Key terms</h2>
+    <p class="lead">New to DeFi? Here's what the jargon means. <a href="/learn" style="color: var(--color-primary); text-decoration: underline;">Read the full guide →</a></p>
+    <dl class="glossary-grid">
+      <div>
+        <dt>APY</dt>
+        <dd>Annual Percentage Yield — the yearly return on your deposit, including compounding. Higher APY means more earnings, but often means higher risk.</dd>
+      </div>
+      <div>
+        <dt>TVL</dt>
+        <dd>Total Value Locked — how much money is deposited in a pool or protocol. Higher TVL generally means more trust and deeper liquidity.</dd>
+      </div>
+      <div>
+        <dt>Impermanent Loss (IL)</dt>
+        <dd>The hidden cost of providing liquidity to trading pairs. When token prices diverge, your holdings are worth less than if you'd just held the tokens. Only affects LP (liquidity provider) pools.</dd>
+      </div>
+      <div>
+        <dt>Risk Score</dt>
+        <dd>YieldRadar's 0–100 rating for each pool. 75–100 is Safe, 50–74 is Watch, 25–49 is Speculative, 0–24 is Danger. Based on 10 weighted factors.</dd>
+      </div>
+      <div>
+        <dt>GoPlus</dt>
+        <dd>A security API that scans tokens for honeypots, malicious contracts, and high transfer taxes. YieldRadar integrates 5 GoPlus endpoints into the risk score.</dd>
+      </div>
+      <div>
+        <dt>Emission Decay</dt>
+        <dd>When a protocol's reward tokens run out, the APY drops. YieldRadar detects this pattern and penalizes pools with unsustainable reward structures.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
 </BaseLayout>
